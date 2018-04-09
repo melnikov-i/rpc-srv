@@ -4,8 +4,8 @@
   "description": "\"RPC service landing page\"",
   "main": "index.tsx",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "webpack -p"
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,52 @@
+{
+  "name": "rpc-srv",
+  "version": "1.0.0",
+  "description": "\"RPC service landing page\"",
+  "main": "index.tsx",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melnikov-i/rpc-srv.git"
+  },
+  "author": "Ivan Melnikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melnikov-i/rpc-srv/issues"
+  },
+  "homepage": "https://github.com/melnikov-i/rpc-srv#readme",
+  "dependencies": {
+    "core-js": "^2.5.5",
+    "file-loader": "^1.1.11",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "styled-components": "^3.2.5",
+    "tslib": "^1.9.0",
+    "url-loader": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.5",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-hot-loader": "^3.0.6",
+    "@types/react-redux": "^5.0.15",
+    "@types/redux-devtools-extension": "^2.13.2",
+    "@types/reselect": "^2.2.0",
+    "awesome-typescript-loader": "^5.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.0.1",
+    "redux-devtools-extension": "^2.13.2",
+    "source-map-loader": "^0.2.3",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  }
+}

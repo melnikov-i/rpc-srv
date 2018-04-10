@@ -3,14 +3,12 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-// import LayoutConnected from '@src/connected/LayoutConnected.usage';
-    // <LayoutConnected />
+import MainUsage from '@src/usage/MainUsage';
+
 
 const Root: JSX.Element = (
   <Provider store={ store }>
-    <div>
-      <p>Hello, World!</p>
-    </div>
+    <MainUsage />
   </Provider>
 );
 

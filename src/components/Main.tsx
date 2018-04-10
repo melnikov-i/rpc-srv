@@ -6,9 +6,17 @@ import {
 } from 'react-scroll';
 
 import {
-  MainLayout,
-  HeaderLayout,
+  MainWrapper,
+  HeaderWrapper,
   HeaderLogo,
+  HeaderElementsAndMenuWrapper,
+  HeaderElementsWrapper,
+  HeaderCarsManufacturers,
+  HeaderTopMenuWrapper,
+  HeaderMenuWrapper,
+
+  CarouselWrapper,
+  CarouselInnerWrapper
 } from '@src/styled';
 
 /**
@@ -60,12 +68,52 @@ interface MainProps {
 
 
 export const Main: React.SFC<MainProps> = ( props ) => {
+  
+  /**
+   * Данные для верхнего меню
+   */
+
+  // const TopMenuData: any[] = [
+  //   {
+  //     text: '+7 (812) 642 1245',
+  //     icon: 'f095',
+  //   },
+  //   {
+  //     text: ['Ежедневно', 'с 8:00 до 22:00'],
+  //     icon: 'f017',
+  //   },
+  //   {
+  //     text: 'Схема проезда',
+  //     icon: 'f041',
+  //   }
+  // ];
+
   return (
-    <MainLayout>
-      <HeaderLayout>
+    <MainWrapper>
+      {/* Шапка сайта */}
+      <HeaderWrapper>
+        {/* Логотип сайта */}
         <HeaderLogo>
           
         </HeaderLogo>
+        {/* Все, что справа от логотипа */}
+        <HeaderElementsAndMenuWrapper>
+          {/* Верхний блок элементов */}
+          <HeaderElementsWrapper>
+            {/* Эмблемы производителей автомобилей */}
+            <HeaderCarsManufacturers>
+              
+            </HeaderCarsManufacturers>
+            {/* Верхнее меню */}
+            <HeaderTopMenuWrapper>
+              
+            </HeaderTopMenuWrapper>
+          </HeaderElementsWrapper>
+          {/* Блок меню страницы */}
+          <HeaderMenuWrapper>
+            
+          </HeaderMenuWrapper>
+        </HeaderElementsAndMenuWrapper>
           <ul>
             <li>
               <Link
@@ -95,7 +143,16 @@ export const Main: React.SFC<MainProps> = ( props ) => {
               </Link>
             </li>
           </ul>
-        </HeaderLayout>
+        </HeaderWrapper>
+        {/* Карусель */}
+        <CarouselWrapper>
+          <CarouselInnerWrapper>
+            
+          </CarouselInnerWrapper>
+        </CarouselWrapper>
+
+
+        
       <Element name={'test1'}>
         <div
           style={{
@@ -129,6 +186,6 @@ export const Main: React.SFC<MainProps> = ( props ) => {
           <p>Hello</p>
         </div>
       </Element>
-    </MainLayout>
+    </MainWrapper>
   );
 };

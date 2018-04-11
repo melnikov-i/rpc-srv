@@ -24,6 +24,7 @@ export const HeaderWrapper = styled.div`
   width: calc(100% - 17px);
   height: 100px;
   background-color: ${ HEADER_BACKGROUND_COLOR };
+  z-index: 100;
 `;
 
 
@@ -98,6 +99,62 @@ background-color: rgba(0, 0, 255, .4);
 
 
 /**
+ * Главный элемент верхнего меню
+ */
+
+export const HeaderTopMenuAnchor = styled.a`
+  text-decoration: none;
+`;
+
+
+/**
+ * Обертка содержимого элемента верхнего меню
+ */
+
+export const HeaderTopMenuContentWrapper = styled.span`
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: 9px 10px;
+  height: 36px;
+  box-sizing: border-box;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width .5s, opacity .5s;
+    width: 0;
+    opacity: 0;
+    height: 4px;
+    background-color: #f3933b;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 20px;
+    transform: translateY(-50%);
+    border-right: ${ ( props: { border: boolean } ) => (
+        props.border ? '1px solid #b4b4b4' : 'none'
+      )
+    };
+    box-sizing: border-box;
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      opacity: 1;      
+    }
+  }
+width: 100%;
+`;
+
+
+/**
  * Обертка основного меню страницы
  */
 
@@ -139,3 +196,4 @@ export const CarouselInnerWrapper = styled.div`
 
 background-color: rgba(0, 0, 255, .2);
 `;
+

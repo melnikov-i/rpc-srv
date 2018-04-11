@@ -13,6 +13,8 @@ import {
   HeaderElementsWrapper,
   HeaderCarsManufacturers,
   HeaderTopMenuWrapper,
+  HeaderTopMenuAnchor,
+  HeaderTopMenuContentWrapper,
   HeaderMenuWrapper,
 
   CarouselWrapper,
@@ -107,6 +109,12 @@ export const Main: React.SFC<MainProps> = ( props ) => {
             {/* Верхнее меню */}
             <HeaderTopMenuWrapper>
               
+              <HeaderTopMenuAnchor>
+                <HeaderTopMenuContentWrapper border={true}>
+                  
+                </HeaderTopMenuContentWrapper>                
+              </HeaderTopMenuAnchor>
+
             </HeaderTopMenuWrapper>
           </HeaderElementsWrapper>
           {/* Блок меню страницы */}

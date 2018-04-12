@@ -12,14 +12,32 @@ import {
   HeaderElementsAndMenuWrapper,
   HeaderElementsWrapper,
   HeaderCarsManufacturers,
+  HeaderCarsManufacturersLogo,
   HeaderTopMenuWrapper,
+  HeaderTopMenuList,
+  HeaderTopMenuListItem,
   HeaderTopMenuAnchor,
-  HeaderTopMenuContentWrapper,
+  HeaderTopMenuTextContentWrapper,
+  HeaderTopMenuAnchorContentWrapper,
+  HeaderTopMenuAnchorContent,
+  HeaderTopMenuAnchorTextWrapper,
+  HeaderTopMenuAnchorLightText,
+  HeaderTopMenuAnchorBoldText,
+  HeaderTopMenuText,
+
   HeaderMenuWrapper,
 
   CarouselWrapper,
   CarouselInnerWrapper
 } from '@src/styled';
+
+/**
+ * Импорт изображений
+ */
+
+const Renault = require('@src/images/renault');
+const Peugeot = require('@src/images/peugeot');
+const Citroen = require('@src/images/citroen');
 
 /**
  * Импорт шрифтов FontAwesome 
@@ -41,7 +59,7 @@ injectGlobal`
     padding: 0;
     font-size: 0;
     border: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   html, body {
@@ -75,20 +93,20 @@ export const Main: React.SFC<MainProps> = ( props ) => {
    * Данные для верхнего меню
    */
 
-  // const TopMenuData: any[] = [
-  //   {
-  //     text: '+7 (812) 642 1245',
-  //     icon: 'f095',
-  //   },
-  //   {
-  //     text: ['Ежедневно', 'с 8:00 до 22:00'],
-  //     icon: 'f017',
-  //   },
-  //   {
-  //     text: 'Схема проезда',
-  //     icon: 'f041',
-  //   }
-  // ];
+  const TopMenuData: any[] = [
+    {
+      text: '+7 (812) 642 1245',
+      icon: 'f095',
+    },
+    {
+      text: ['График', 'работы'],
+      icon: 'f017',
+    },
+    {
+      text: ['Схема', 'проезда'],
+      icon: 'f041',
+    }
+  ];
 
   return (
     <MainWrapper>
@@ -104,16 +122,59 @@ export const Main: React.SFC<MainProps> = ( props ) => {
           <HeaderElementsWrapper>
             {/* Эмблемы производителей автомобилей */}
             <HeaderCarsManufacturers>
-              
+              <HeaderCarsManufacturersLogo
+                src={Renault} alt={'Renault'} />
+              <HeaderCarsManufacturersLogo
+                src={Peugeot} alt={'Peugeot'} />
+              <HeaderCarsManufacturersLogo
+                src={Citroen} alt={'Citroen'} />
             </HeaderCarsManufacturers>
             {/* Верхнее меню */}
             <HeaderTopMenuWrapper>
+              <HeaderTopMenuList>
+                {/* Элементы верхнего меню */}
+                {TopMenuData.map((e, i, a) => (
+                  <HeaderTopMenuListItem key={i}>
+                    {(typeof(e.text) === 'object') ? (
+                      <HeaderTopMenuAnchor>
+                        <HeaderTopMenuAnchorContentWrapper
+                          isLast={i + 1 === a.length}
+                        >
+                          <HeaderTopMenuAnchorContent
+                            icon={e.icon}
+                          >
+                            <HeaderTopMenuAnchorTextWrapper>
+                              <HeaderTopMenuAnchorLightText>
+                                {e.text[0]}
+                              </HeaderTopMenuAnchorLightText>
+                              <HeaderTopMenuAnchorBoldText>
+                                {e.text[1]}
+                              </HeaderTopMenuAnchorBoldText>
+                            </HeaderTopMenuAnchorTextWrapper>
+                          </HeaderTopMenuAnchorContent>
+                        </HeaderTopMenuAnchorContentWrapper>
+                      </HeaderTopMenuAnchor>
+                    ) : (
+                      <HeaderTopMenuTextContentWrapper
+                        isLast={i + 1 === a.length}
+                      >
+                        <HeaderTopMenuAnchorContent
+                          icon={e.icon}
+                        >
+                          <HeaderTopMenuAnchorTextWrapper>
+                            <HeaderTopMenuText>
+                              {e.text}
+                            </HeaderTopMenuText>
+                          </HeaderTopMenuAnchorTextWrapper>
+                        </HeaderTopMenuAnchorContent>
+                      </HeaderTopMenuTextContentWrapper>
+                    )}
+                  </HeaderTopMenuListItem>
+                ))}
+
               
-              <HeaderTopMenuAnchor>
-                <HeaderTopMenuContentWrapper border={true}>
-                  
-                </HeaderTopMenuContentWrapper>                
-              </HeaderTopMenuAnchor>
+              </HeaderTopMenuList>
+              
 
             </HeaderTopMenuWrapper>
           </HeaderElementsWrapper>
@@ -152,6 +213,7 @@ export const Main: React.SFC<MainProps> = ( props ) => {
             </li>
           </ul>
         </HeaderWrapper>
+
         {/* Карусель */}
         <CarouselWrapper>
           <CarouselInnerWrapper>

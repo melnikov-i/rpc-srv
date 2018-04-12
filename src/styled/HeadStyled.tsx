@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import {
   HEADER_BACKGROUND_COLOR,
   MAIN_CONTAINER_MAX_WIDTH,
+  HEADER_ACCENT_COLOR,
+  HEADER_LOGO_WIDTH
 } from '@src/styled';
 
 
@@ -33,7 +35,7 @@ export const HeaderWrapper = styled.div`
  */
 
 export const HeaderLogo = styled.div`
-  width: 140px;
+  width: ${ HEADER_LOGO_WIDTH };
   height: 100px;
   display: inline-block;
   vertical-align: top;
@@ -47,13 +49,13 @@ background-color: rgba(127, 127, 127, .2);
  */
 
 export const HeaderElementsAndMenuWrapper = styled.div`
-  width: calc(100% - 140px);
+  width: calc(100% - ${ HEADER_LOGO_WIDTH });
   height: 100px;
   display: inline-block;
   vertical-align: top;
 
-background-color: rgba(127, 0, 0, .4);
 `;
+// background-color: rgba(127, 0, 0, .4);
 
 
 /**
@@ -65,8 +67,8 @@ export const HeaderElementsWrapper = styled.div`
   height: 65px;
   position: relative;
 
-background-color: rgba(0, 127, 0, .4);
 `;
+// background-color: rgba(0, 127, 0, .4);
 
 
 /**
@@ -74,12 +76,21 @@ background-color: rgba(0, 127, 0, .4);
  */
 
 export const HeaderCarsManufacturers = styled.div`
-  width: 195px;
   height: 65px;
   display: inline-block;
   vertical-align: top;
+  padding-top: 10px;
+  box-sizing: border-box;
+`;
 
-background-color: rgba(0, 255, 0, .2);
+
+/**
+ * Изображения логотипов компаний автопроизводителей
+ */
+
+export const HeaderCarsManufacturersLogo = styled.img`
+  height: 45px;
+  margin-right: 10px;
 `;
 
 
@@ -88,13 +99,34 @@ background-color: rgba(0, 255, 0, .2);
  */
 
 export const HeaderTopMenuWrapper = styled.div`
-  min-width: 100px;
   height: 36px;
   position: absolute;
   top: 0;
   right: 0;
 
-background-color: rgba(0, 0, 255, .4);
+`;
+// background-color: rgba(0, 0, 255, .4);
+// min-width: 100px;
+
+
+/**
+ * Контейнер верхнего меню
+ */
+
+export const HeaderTopMenuList = styled.ul`
+  width: 100%;
+`;
+
+
+/**
+ * Элемент верхнего меню
+ */
+
+export const HeaderTopMenuListItem = styled.li`
+  list-style-type: none;
+  list-style-position: inside;
+  display: inline-block;
+  vertical-align: top;
 `;
 
 
@@ -108,16 +140,42 @@ export const HeaderTopMenuAnchor = styled.a`
 
 
 /**
- * Обертка содержимого элемента верхнего меню
+ * Обертка содержимого для текста вернего меню
  */
 
-export const HeaderTopMenuContentWrapper = styled.span`
+export const HeaderTopMenuTextContentWrapper = styled.div`
   display: block;
   position: relative;
-  cursor: pointer;
-  padding: 9px 10px;
+  padding: ${ ( props: { isLast: boolean } ) => (
+      props.isLast ? '8px 30px 8px 10px' : '8px 10px'
+    )
+  };
   height: 36px;
   box-sizing: border-box;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 20px;
+    transform: translateY(-50%);
+    border-right: ${ ( props: { isLast: boolean } ) => (
+        props.isLast ? 'none' : '1px solid #fff'
+      )
+    };
+    box-sizing: border-box;
+  }
+`;
+
+
+/**
+ * Обертка содержимого для ссылки верхнего меню
+ */
+
+export const HeaderTopMenuAnchorContentWrapper =
+HeaderTopMenuTextContentWrapper.extend`
+  cursor: pointer;
   &::before {
     content: "";
     position: absolute;
@@ -128,21 +186,7 @@ export const HeaderTopMenuContentWrapper = styled.span`
     width: 0;
     opacity: 0;
     height: 4px;
-    background-color: #f3933b;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 0;
-    height: 20px;
-    transform: translateY(-50%);
-    border-right: ${ ( props: { border: boolean } ) => (
-        props.border ? '1px solid #b4b4b4' : 'none'
-      )
-    };
-    box-sizing: border-box;
+    background-color: ${ HEADER_ACCENT_COLOR };
   }
   &:hover {
     &::before {
@@ -150,9 +194,72 @@ export const HeaderTopMenuContentWrapper = styled.span`
       opacity: 1;      
     }
   }
-width: 100%;
 `;
 
+
+
+/**
+ * Блок с текстом и иконкой
+ */
+
+export const HeaderTopMenuAnchorContent = styled.div`
+  height: 20px;
+  &::before {
+    content: "\\${ ( props: { icon: string } ) => props.icon }";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+    margin-right: 10px;
+  }
+`;
+
+
+/**
+ * Обертка текстовых блоков
+ */
+
+export const HeaderTopMenuAnchorTextWrapper = styled.div`
+  display: inline-block;
+  vertical-align: top;
+`;
+
+/**
+ * Верхний текстовый блок с обычным шрифтом
+ */
+
+export const HeaderTopMenuAnchorLightText = styled.span`
+  display: block;
+  font-size: 9px;
+  color: #fff;
+`;
+  // line-height: .9;
+
+
+/**
+ * Нижний текстовый блок с жирным шрифтом
+ */
+
+export const HeaderTopMenuAnchorBoldText = styled.span`
+  display: block;
+  font-size: 10px;
+  color: #fff;
+  font-weight: bold;
+  line-height: .9;
+`;
+
+
+/**
+ * Текстовый блок для большого текста
+ */
+
+export const HeaderTopMenuText = styled.div`
+  display: block;
+  font-size: 18px;
+  color: #fff;
+  
+`;
 
 /**
  * Обертка основного меню страницы

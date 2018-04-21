@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
-// import { reducer as main, State as MainState } from '@src/redux/main';
+import { reducer as carousel, State as CarouselState } from '@src/redux/carousel';
 
-export interface RootState {}
+export interface RootState {
+    carousel: CarouselState,
+}
 
-export const rootReducer = combineReducers<RootState>({});
+export const rootReducer = combineReducers<RootState>({
+    carousel
+});

@@ -31,6 +31,9 @@ import {
   CarouselInnerWrapper
 } from '@src/styled';
 
+import CarouselUsage from
+  '@src/usage/CarouselUsage';
+
 /**
  * Импорт изображений
  */
@@ -82,9 +85,7 @@ injectGlobal`
 `;
 
 
-interface MainProps {
-
-}
+interface MainProps {}
 
 
 export const Main: React.SFC<MainProps> = ( props ) => {
@@ -170,12 +171,8 @@ export const Main: React.SFC<MainProps> = ( props ) => {
                       </HeaderTopMenuTextContentWrapper>
                     )}
                   </HeaderTopMenuListItem>
-                ))}
-
-              
+                ))}              
               </HeaderTopMenuList>
-              
-
             </HeaderTopMenuWrapper>
           </HeaderElementsWrapper>
           {/* Блок меню страницы */}
@@ -183,6 +180,13 @@ export const Main: React.SFC<MainProps> = ( props ) => {
             
           </HeaderMenuWrapper>
         </HeaderElementsAndMenuWrapper>
+
+
+
+
+
+
+          {/* Временное меню */}
           <ul>
             <li>
               <Link
@@ -217,7 +221,7 @@ export const Main: React.SFC<MainProps> = ( props ) => {
         {/* Карусель */}
         <CarouselWrapper>
           <CarouselInnerWrapper>
-            
+            <CarouselUsage  />
           </CarouselInnerWrapper>
         </CarouselWrapper>
 

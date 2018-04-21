@@ -1,1 +1,2 @@
-export * from './MainUsage'
+export * from './MainUsage';
+export * from './CarouselUsage';

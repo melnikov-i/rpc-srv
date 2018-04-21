@@ -34,3 +34,8 @@ export const CarouselInnerWrapper = styled.div`
 
 background-color: rgba(0, 0, 255, .2);
 `;
+
+
+/**
+ * 
+*/

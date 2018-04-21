@@ -6,14 +6,18 @@ import { Dispatch, RootState } from '@src/redux';
 
 import { Carousel } from '@src/components';
 
-// import {} from '@src/interfaces';
+import {
+  CarouselInterface
+} from '@src/interfaces';
 
-// import {} from '@src/selectors';
+import {
+  CarouselCollectionSelector
+} from '@src/selectors';
 
 const mapStateToProps = createStructuredSelector<RootState, {
-    
+    CarouselCollection: CarouselInterface
   }>({
-    
+    CarouselCollection: CarouselCollectionSelector,
   });
 
 const mapDispatchToProps = ( dispatch: Dispatch ) => bindActionCreators({

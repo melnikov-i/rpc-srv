@@ -36,6 +36,7 @@
     "@types/react-dom": "^16.0.4",
     "@types/react-hot-loader": "^3.0.6",
     "@types/react-redux": "^5.0.15",
+    "@types/react-scroll": "^1.5.3",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/reselect": "^2.2.0",
     "awesome-typescript-loader": "^5.0.0",

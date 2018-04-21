@@ -192,7 +192,7 @@ export const Main: React.SFC<MainProps> = ( props ) => {
               <Link
                 to={'test1'}
                 smooth={true}
-                dutation={300}
+                duration={300}
               >
                 {'Test1'}
               </Link>
@@ -201,7 +201,7 @@ export const Main: React.SFC<MainProps> = ( props ) => {
               <Link
                 to={'test2'}
                 smooth={true}
-                dutation={300}
+                duration={300}
               >
                 {'Test2'}
               </Link>
@@ -210,7 +210,7 @@ export const Main: React.SFC<MainProps> = ( props ) => {
               <Link
                 to={'test3'}
                 smooth={true}
-                dutation={300}
+                duration={300}
               >
                 {'Test3'}
               </Link>

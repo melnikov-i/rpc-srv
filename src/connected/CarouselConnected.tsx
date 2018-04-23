@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { Dispatch, RootState } from '@src/redux';
 
-
 import { Carousel } from '@src/components';
+
+import {
+  asyncActionCreators
+} from '@src/redux/carousel';
 
 import {
   CarouselInterface
@@ -21,7 +24,8 @@ const mapStateToProps = createStructuredSelector<RootState, {
   });
 
 const mapDispatchToProps = ( dispatch: Dispatch ) => bindActionCreators({
-  
+  makeCarouselAnimationContinue: 
+    asyncActionCreators.makeCarouselAnimationContinue,
 }, dispatch);
 
 export const CarouselConnected = connect(

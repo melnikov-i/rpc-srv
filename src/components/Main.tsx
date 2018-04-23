@@ -28,10 +28,10 @@ import {
   HeaderMenuWrapper,
 
   CarouselWrapper,
-  CarouselInnerWrapper
+  // CarouselInnerWrapper
 } from '@src/styled';
 
-import CarouselUsage from
+import CarouselConnected from
   '@src/usage/CarouselUsage';
 
 /**
@@ -89,6 +89,7 @@ interface MainProps {}
 
 
 export const Main: React.SFC<MainProps> = ( props ) => {
+  console.log('main:');
   
   /**
    * Данные для верхнего меню
@@ -220,13 +221,10 @@ export const Main: React.SFC<MainProps> = ( props ) => {
 
         {/* Карусель */}
         <CarouselWrapper>
-          <CarouselInnerWrapper>
-            <CarouselUsage  />
-          </CarouselInnerWrapper>
+          <CarouselConnected />
         </CarouselWrapper>
 
 
-        
       <Element name={'test1'}>
         <div
           style={{

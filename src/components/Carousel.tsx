@@ -63,7 +63,7 @@ export const Carousel: React.SFC<CarouselProps> = ( props ) => {
     setTimeout(()=>{
       const element: HTMLElement | null = document.getElementById('CarouselWrapper');
       if ( element !== null ) {
-        element.style.transition = 'transform 1s linear 0s';
+        element.style.transition = 'transform 2s ease 0s';
         element.style.transform = (CarouselCollection.delay) ? 'translateX(-50%)' : 'translateX(0)';
       }
     }, 2000);

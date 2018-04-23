@@ -5,7 +5,8 @@ import {
 
 import {
   CAROUSEL_ANIMATION_CONTINUE,
-  CAROUSEL_TRANSFORM_CHANGE
+  CAROUSEL_TRANSFORM_CHANGE,
+  CAROUSEL_ANIMATION_CHANGE_DIRECTION,
 } from '@src/redux/carousel';
 
 export type State = {
@@ -17,9 +18,7 @@ const slide2 = require('@src/images/slide_2.png');
 const slide3 = require('@src/images/slide_3.png');
 
 const CarouselInit: CarouselInterface = {
-  delay: '6s',
   direction: true,
-  transform: 'translateX(-25%)',
   items: [
     {
       image: slide1,
@@ -48,6 +47,11 @@ export const reducer = combineReducers({
         return {
           ...state,
           ['transform']: action.payload,
+        };
+      case CAROUSEL_ANIMATION_CHANGE_DIRECTION:
+        return {
+          ...state,
+          ['direction']: action.payload,
         }
       default:
         return state;

@@ -5,6 +5,7 @@ import {
   Element,
 } from 'react-scroll';
 
+
 import {
   MainWrapper,
   HeaderWrapper,
@@ -27,9 +28,7 @@ import {
 
   HeaderMenuWrapper,
 
-  CarouselWrapper,
-  CarouselInnerWrapperBackwardAnchor,
-  CarouselInnerWrapperForwardAnchor,
+
   // CarouselInnerWrapper
 } from '@src/styled';
 
@@ -91,8 +90,6 @@ interface MainProps {}
 
 
 export const Main: React.SFC<MainProps> = ( props ) => {
-  console.log('main:');
-  
   /**
    * Данные для верхнего меню
    */
@@ -111,6 +108,8 @@ export const Main: React.SFC<MainProps> = ( props ) => {
       icon: 'f041',
     }
   ];
+
+
 
   return (
     <MainWrapper>
@@ -222,11 +221,12 @@ export const Main: React.SFC<MainProps> = ( props ) => {
         </HeaderWrapper>
 
         {/* Карусель */}
-        <CarouselWrapper>
-          <CarouselInnerWrapperBackwardAnchor />
-          <CarouselConnected />
-          <CarouselInnerWrapperForwardAnchor />
-        </CarouselWrapper>
+        <CarouselConnected />
+
+
+
+
+
 
 
       <Element name={'test1'}>

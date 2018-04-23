@@ -12,7 +12,9 @@ import {
 import {
   CarouselInnerWrapper,
   CarouselItem,
-  // CarouselInnerWrapperBackwardAnchor,
+  CarouselWrapper,
+  CarouselInnerWrapperBackwardAnchor,
+  CarouselInnerWrapperForwardAnchor,
 } from '@src/styled';
 
 interface CarouselProps {
@@ -38,20 +40,22 @@ export const Carousel: React.SFC<CarouselProps> = ( props ) => {
      * отображения на странице.
     */
     const items: CarouselItemInterface[] = [
-      CarouselCollection.items[1],
-      CarouselCollection.items[0],
-      CarouselCollection.items[1],
-      ...CarouselCollection.items.slice(2)
-    ];
+        CarouselCollection.items[CarouselCollection.items.length - 1],
+        CarouselCollection.items[0],
+        CarouselCollection.items[1],
+      ];
+
+    console.log('items:', items);
 
     const payload: CarouselInterface = {
-      ...CarouselCollection,
-      ['delay']: (CarouselCollection.delay === '6s') ? '5s' : '6s',
-      ['direction']: true,
-      ['transform']: 'translateX(-25%)',
-      ['items']: [
+      ['direction']: CarouselCollection.direction,
+      ['items']: CarouselCollection.direction ? [
         ...CarouselCollection.items.slice(1),
         CarouselCollection.items[0],
+      ] : [
+        CarouselCollection.items[CarouselCollection.items.length - 1],
+        ...CarouselCollection.items.slice(
+          0, CarouselCollection.items.length - 1),
       ]
     };
 
@@ -64,27 +68,58 @@ export const Carousel: React.SFC<CarouselProps> = ( props ) => {
       const element: HTMLElement | null = document.getElementById('CarouselWrapper');
       if ( element !== null ) {
         element.style.transition = 'transform 2s ease 0s';
-        element.style.transform = (CarouselCollection.delay) ? 'translateX(-50%)' : 'translateX(0)';
+        element.style.transform = 
+          (CarouselCollection.direction) ? 'translateX(-50%)' : 'translateX(0)';
       }
-    }, 2000);
+    }, 1000);
 
+
+  /**
+   * Обработчики событий
+  */
+  const handlerBackwardAnchor = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    console.log('backward');
+    makeCarouselAnimationContinue({
+      ...payload,
+      ['direction']: false,
+    }, false);
+  };
+  
+  const handlerForwardAnchor = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    console.log('forward');
+    
+    makeCarouselAnimationContinue({
+      ...payload,
+      ['direction']: true,
+    }, false);
+  };
 
   return (
-    <CarouselInnerWrapper
-      id={'CarouselWrapper'}
-      width={String(CarouselInnerWrapperWidth)}
-      aDirection={CarouselCollection.direction}
-    >
-      {items.map((e: CarouselItemInterface, i: number) => (
-        <CarouselItem
-          key={i}
-          image={e.image}
-          width={CarouselInnerWrapperWidth}
-        >
+    <CarouselWrapper>
+      <CarouselInnerWrapperBackwardAnchor
+        onClick={handlerBackwardAnchor}
+      />
+      <CarouselInnerWrapper
+        id={'CarouselWrapper'}
+        width={String(CarouselInnerWrapperWidth)}
+      >
+        {items.map((e: CarouselItemInterface, i: number) => (
+          <CarouselItem
+            key={i}
+            image={e.image}
+            width={CarouselInnerWrapperWidth}
+          >
 
-        </CarouselItem>
-      ))}
-    </CarouselInnerWrapper>
-
+          </CarouselItem>
+        ))}
+      </CarouselInnerWrapper>
+      <CarouselInnerWrapperForwardAnchor
+        onClick={handlerForwardAnchor}
+      />
+    </CarouselWrapper>
   );
 }

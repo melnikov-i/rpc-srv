@@ -28,7 +28,6 @@ export const CarouselWrapper = styled.div`
 
 interface CarouselInnerWrapperProps {
   width: string,
-  aDirection: boolean,
 }
 
 export const CarouselInnerWrapper = styled.div`

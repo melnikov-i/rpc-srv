@@ -41,10 +41,7 @@ export const reducer = combineReducers({
   CarouselCollection: ( state = CarouselInit, action ) => {
     switch ( action.type ) {
       case CAROUSEL_ANIMATION_CONTINUE:
-        return {
-          ...state,
-          ['items']: action.payload,
-        }
+        return action.payload;
       default:
         return state;
     }

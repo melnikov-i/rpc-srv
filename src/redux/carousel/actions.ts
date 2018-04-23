@@ -1,5 +1,5 @@
 import {
-  CarouselItemInterface
+  CarouselInterface
 } from '@src/interfaces';
 import { Dispatch } from '@src/redux';
 
@@ -12,12 +12,12 @@ export const CAROUSEL_ANIMATION_CONTINUE =
 export type Actions = {
   CAROUSEL_ANIMATION_CONTINUE: {
     type: typeof CAROUSEL_ANIMATION_CONTINUE,
-    payload: CarouselItemInterface[],
+    payload: CarouselInterface,
   }
 };
 
 export const syncActionCreators = {
-  carouselAnimationContinue: ( payload: CarouselItemInterface[] ):
+  carouselAnimationContinue: ( payload: CarouselInterface ):
   Actions[typeof CAROUSEL_ANIMATION_CONTINUE] => ({
     type: CAROUSEL_ANIMATION_CONTINUE, payload,
   }),
@@ -30,7 +30,7 @@ export const asyncActionCreators = {
    * либо с задержкой.
   */
   makeCarouselAnimationContinue: 
-  ( payload: CarouselItemInterface[], delay: boolean ) => {
+  ( payload: CarouselInterface, delay: boolean ) => {
     return ( dispatch: Dispatch ) => {
       if ( delay ) {
         setTimeout(() => (

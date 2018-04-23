@@ -58,18 +58,21 @@ export const CarouselInnerWrapper = styled.div`
   right: 0;
   bottom: 0;
   width: ${(props: CarouselInnerWrapperProps) => props.width + '00%'};
-  transform: translateX(-25%);
-  transition: 'transform 1s ease 0s';
+  transition: transform 1s linear 6s;
   `;
-// animation-name: ${(props: CarouselInnerWrapperProps) => (
-//   props.aDirection ? MoveToForward : MoveToBackward
-// )};
-// animation-duration: 1s;
-// animation-timing-function: linear;
-// animation-fill-mode: both;
-// animation-delay: ${(props: CarouselInnerWrapperProps) => (
-//   props.delay
-// )};
+  // transform: translateX(-25%);
+    // animation-name: ${(props: CarouselInnerWrapperProps) => (
+    //   props.aDirection ? MoveToForward : MoveToBackward
+    // )};
+    // animation-duration: 1s;
+    // animation-timing-function: linear;
+    // animation-fill-mode: both;
+    // animation-delay: ${(props: CarouselInnerWrapperProps) => {
+    //   console.log('styled:', props.delay);
+    //   return (
+    //     props.delay
+    //   )
+    // }};
 
 // transition: transform 1s ease ${(props: CarouselInnerWrapperProps) => (
 //   props.delay

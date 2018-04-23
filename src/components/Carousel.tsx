@@ -12,6 +12,7 @@ import {
 import {
   CarouselInnerWrapper,
   CarouselItem,
+  // CarouselInnerWrapperBackwardAnchor,
 } from '@src/styled';
 
 interface CarouselProps {
@@ -47,55 +48,41 @@ export const Carousel: React.SFC<CarouselProps> = ( props ) => {
       ...CarouselCollection,
       ['delay']: (CarouselCollection.delay === '6s') ? '5s' : '6s',
       ['direction']: true,
+      ['transform']: 'translateX(-25%)',
       ['items']: [
         ...CarouselCollection.items.slice(1),
         CarouselCollection.items[0],
       ]
     };
 
-    const makeAnimation = () => {
-      const element: HTMLElement | null = 
-        document.getElementById('CarouselWrapper');
-      console.log('makeAnimation');
-      if ( element !== null ) {
-        element.style.transform = 'translateX(-50%)';
-      } else {
-        setTimeout(() => {
-          makeAnimation();
-        }, 200);
-      }
-      
-      return 'OK';
-    };
     makeCarouselAnimationContinue(payload, true);
 
-    // console.log('collection:', CarouselCollection);
-    // console.log('payload:', payload);
-    // console.log('items:', items);
+    /**
+     * Приводит слайды в движение спустя 2 секунды
+    */
+    setTimeout(()=>{
+      const element: HTMLElement | null = document.getElementById('CarouselWrapper');
+      if ( element !== null ) {
+        element.style.transition = 'transform 1s linear 0s';
+        element.style.transform = (CarouselCollection.delay) ? 'translateX(-50%)' : 'translateX(0)';
+      }
+    }, 2000);
 
-    // (setTimeout(()=>{
-    //   const element: HTMLElement | null = 
-    //     document.getElementById('carouselWrapper');
-    //   if ( element !== null ) element.style.transform = 'translateX(-50%)'
-    // }, 3000));
 
-    console.log('carousel');
-
-    
   return (
     <CarouselInnerWrapper
       id={'CarouselWrapper'}
       width={String(CarouselInnerWrapperWidth)}
-      delay={CarouselCollection.delay}
       aDirection={CarouselCollection.direction}
-      data-make-animation={makeAnimation()}
     >
       {items.map((e: CarouselItemInterface, i: number) => (
         <CarouselItem
           key={i}
           image={e.image}
           width={CarouselInnerWrapperWidth}
-        />
+        >
+
+        </CarouselItem>
       ))}
     </CarouselInnerWrapper>
 

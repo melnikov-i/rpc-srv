@@ -23,7 +23,7 @@ export const HeaderWrapper = styled.div`
   display: block;
   margin-top: -100px;
   max-width: ${ MAIN_CONTAINER_MAX_WIDTH };
-  width: calc(100% - 17px);
+  width: calc(100% - 15px);
   height: 100px;
   background-color: ${ HEADER_BACKGROUND_COLOR };
   z-index: 100;

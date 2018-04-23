@@ -28,6 +28,8 @@ import {
   HeaderMenuWrapper,
 
   CarouselWrapper,
+  CarouselInnerWrapperBackwardAnchor,
+  CarouselInnerWrapperForwardAnchor,
   // CarouselInnerWrapper
 } from '@src/styled';
 
@@ -221,7 +223,9 @@ export const Main: React.SFC<MainProps> = ( props ) => {
 
         {/* Карусель */}
         <CarouselWrapper>
+          <CarouselInnerWrapperBackwardAnchor />
           <CarouselConnected />
+          <CarouselInnerWrapperForwardAnchor />
         </CarouselWrapper>
 
 

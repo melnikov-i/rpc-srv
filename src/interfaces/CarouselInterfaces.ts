@@ -7,5 +7,6 @@ export interface CarouselItemInterface {
 export interface CarouselInterface {
   delay: string,
   direction: boolean,
+  transform: string,
   items: CarouselItemInterface[],
 }

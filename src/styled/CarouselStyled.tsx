@@ -28,28 +28,8 @@ export const CarouselWrapper = styled.div`
 
 interface CarouselInnerWrapperProps {
   width: string,
-  delay: string,
   aDirection: boolean,
-  // translate: string,
 }
-
-// const MoveToForward = keyframes`
-//   0% {
-//     transform: translateX(-25%);
-//   }
-//   100% {
-//     transform: translateX(-50%);
-//   }
-// `;
-
-// const MoveToBackward = keyframes`
-//   0% {
-//     transform: translateX(-25%);
-//   }
-//   100% {
-//     transform: translateX(0);
-//   }
-// `;
 
 export const CarouselInnerWrapper = styled.div`
   position: absolute;
@@ -58,25 +38,56 @@ export const CarouselInnerWrapper = styled.div`
   right: 0;
   bottom: 0;
   width: ${(props: CarouselInnerWrapperProps) => props.width + '00%'};
-  transition: transform 1s linear 6s;
+  transform: translateX(-25%);
   `;
-  // transform: translateX(-25%);
-    // animation-name: ${(props: CarouselInnerWrapperProps) => (
-    //   props.aDirection ? MoveToForward : MoveToBackward
-    // )};
-    // animation-duration: 1s;
-    // animation-timing-function: linear;
-    // animation-fill-mode: both;
-    // animation-delay: ${(props: CarouselInnerWrapperProps) => {
-    //   console.log('styled:', props.delay);
-    //   return (
-    //     props.delay
-    //   )
-    // }};
+  
+  
+export const CarouselInnerWrapperBackwardAnchor = styled.div`
+  &::before {
+    content: "\\f104";
+    font-family: FontAwesome;
+    font-size: 56px;
+    padding-left: 14px;
+    box-sizing: border-box;
+    font-weight: normal;
+    color: #fff;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, .5);
+    z-index: 10;
+    cursor: pointer;
+  }
+`;
+  
 
-// transition: transform 1s ease ${(props: CarouselInnerWrapperProps) => (
-//   props.delay
-// )};
+
+export const CarouselInnerWrapperForwardAnchor = styled.div`
+  &::before {
+    content: "\\f105";
+    font-family: FontAwesome;
+    font-size: 56px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    font-weight: normal;
+    color: #fff;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, .5);
+    z-index: 10;
+    cursor: pointer;
+  }
+`;
+
         
 /**
  * Внешний блок слайда карусели.
@@ -95,6 +106,7 @@ export const CarouselItem = styled.div`
   background-image: url(${(props: CarouselItemProps) => (props.image)});
   background-size: cover;
   background-position: center center;
+
 `;
         // width: 100%;
   // height: 100%;

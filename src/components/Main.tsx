@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { injectGlobal } from 'styled-components';
 import {
-  Link,
   Element,
+  scroller,
+  animateScroll,
 } from 'react-scroll';
-
 
 import {
   MainWrapper,
@@ -28,17 +28,19 @@ import {
 
   HeaderMenuWrapper,
 
-
-  // CarouselInnerWrapper
+  FooterWrapper,
+  FooterScheduleWrapper,
+  FooterSchedule,
+  FooterMapWrapper,
+  FooterMap,
+  FooterToTop,
 } from '@src/styled';
 
-import CarouselConnected from
-  '@src/usage/CarouselUsage';
+import CarouselConnected from '@src/usage/CarouselUsage';
 
 /**
  * Импорт изображений
  */
-
 const Renault = require('@src/images/renault');
 const Peugeot = require('@src/images/peugeot');
 const Citroen = require('@src/images/citroen');
@@ -46,7 +48,6 @@ const Citroen = require('@src/images/citroen');
 /**
  * Импорт шрифтов FontAwesome 
  */
-
 const FontAwesomeEOT = require('@src/fonts/fontawesome-webfont.eot');
 const FontAwesomeWOFF2 = require('@src/fonts/fontawesome-webfont.woff2');
 const FontAwesomeWOFF = require('@src/fonts/fontawesome-webfont.woff');
@@ -56,7 +57,6 @@ const FontAwesomeSVG = require('@src/fonts/fontawesome-webfont.svg');
 /**
  * Глобальные стили 
  */
-
 injectGlobal`
   * {
     margin: 0;
@@ -66,50 +66,58 @@ injectGlobal`
     font-family: 'Roboto', sans-serif;
   }
 
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
   @font-face {
     font-family: 'FontAwesome';
     src: url('${FontAwesomeEOT}?v=4.7.0');
-    src: url('${FontAwesomeEOT}?#iefix&v=4.7.0') format('embedded-opentype'), 
-         url('${FontAwesomeWOFF2}?v=4.7.0') format('woff2'), 
-         url('${FontAwesomeTTF}?v=4.7.0') format('truetype'), 
-         url('${FontAwesomeWOFF}?v=4.7.0') format('woff'), 
+    src: url('${FontAwesomeEOT}?#iefix&v=4.7.0') format('embedded-opentype'),
+         url('${FontAwesomeWOFF2}?v=4.7.0') format('woff2'),
+         url('${FontAwesomeTTF}?v=4.7.0') format('truetype'),
+         url('${FontAwesomeWOFF}?v=4.7.0') format('woff'),
          url('${FontAwesomeSVG}?v=4.7.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal;
   }
 `;
 
+interface IMainProps {}
 
-interface MainProps {}
-
-
-export const Main: React.SFC<MainProps> = ( props ) => {
+export const Main: React.SFC<IMainProps> = ( props ) => {
   /**
    * Данные для верхнего меню
    */
-
   const TopMenuData: any[] = [
     {
       text: '+7 (812) 642 1245',
       icon: 'f095',
+      to: '',
     },
     {
       text: ['График', 'работы'],
       icon: 'f017',
+      to: 'schedule',
     },
     {
       text: ['Схема', 'проезда'],
       icon: 'f041',
-    }
+      to: 'map',
+    },
   ];
 
+  const handlerTopMenuAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    const elementName: string =
+      String(e.currentTarget.getAttribute('data-to'));
+    scroller.scrollTo(elementName, {
+      smooth: 'easeInOutQart',
+      duration: 1000,
+      delay: 0,
+    });
+  };
 
+  const handlerToTop = () => {
+    animateScroll.scrollToTop();
+  };
 
   return (
     <MainWrapper>
@@ -117,7 +125,6 @@ export const Main: React.SFC<MainProps> = ( props ) => {
       <HeaderWrapper>
         {/* Логотип сайта */}
         <HeaderLogo>
-          
         </HeaderLogo>
         {/* Все, что справа от логотипа */}
         <HeaderElementsAndMenuWrapper>
@@ -139,23 +146,26 @@ export const Main: React.SFC<MainProps> = ( props ) => {
                 {TopMenuData.map((e, i, a) => (
                   <HeaderTopMenuListItem key={i}>
                     {(typeof(e.text) === 'object') ? (
-                      <HeaderTopMenuAnchor>
+                      <HeaderTopMenuAnchor
+                        data-to={e.to}
+                        onClick={handlerTopMenuAnchor}
+                      >
                         <HeaderTopMenuAnchorContentWrapper
-                          isLast={i + 1 === a.length}
-                        >
-                          <HeaderTopMenuAnchorContent
-                            icon={e.icon}
+                            isLast={i + 1 === a.length}
                           >
-                            <HeaderTopMenuAnchorTextWrapper>
-                              <HeaderTopMenuAnchorLightText>
-                                {e.text[0]}
-                              </HeaderTopMenuAnchorLightText>
-                              <HeaderTopMenuAnchorBoldText>
-                                {e.text[1]}
-                              </HeaderTopMenuAnchorBoldText>
-                            </HeaderTopMenuAnchorTextWrapper>
-                          </HeaderTopMenuAnchorContent>
-                        </HeaderTopMenuAnchorContentWrapper>
+                            <HeaderTopMenuAnchorContent
+                              icon={e.icon}
+                            >
+                              <HeaderTopMenuAnchorTextWrapper>
+                                <HeaderTopMenuAnchorLightText>
+                                  {e.text[0]}
+                                </HeaderTopMenuAnchorLightText>
+                                <HeaderTopMenuAnchorBoldText>
+                                  {e.text[1]}
+                                </HeaderTopMenuAnchorBoldText>
+                              </HeaderTopMenuAnchorTextWrapper>
+                            </HeaderTopMenuAnchorContent>
+                          </HeaderTopMenuAnchorContentWrapper>
                       </HeaderTopMenuAnchor>
                     ) : (
                       <HeaderTopMenuTextContentWrapper
@@ -173,95 +183,32 @@ export const Main: React.SFC<MainProps> = ( props ) => {
                       </HeaderTopMenuTextContentWrapper>
                     )}
                   </HeaderTopMenuListItem>
-                ))}              
+                ))}
               </HeaderTopMenuList>
             </HeaderTopMenuWrapper>
           </HeaderElementsWrapper>
           {/* Блок меню страницы */}
           <HeaderMenuWrapper>
-            
           </HeaderMenuWrapper>
         </HeaderElementsAndMenuWrapper>
-
-
-
-
-
-
-          {/* Временное меню */}
-          <ul>
-            <li>
-              <Link
-                to={'test1'}
-                smooth={true}
-                duration={300}
-              >
-                {'Test1'}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={'test2'}
-                smooth={true}
-                duration={300}
-              >
-                {'Test2'}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={'test3'}
-                smooth={true}
-                duration={300}
-              >
-                {'Test3'}
-              </Link>
-            </li>
-          </ul>
-        </HeaderWrapper>
-
-        {/* Карусель */}
-        <CarouselConnected />
-
-
-
-
-
-
-
-      <Element name={'test1'}>
-        <div
-          style={{
-            width: '1280px',
-            height: '615px',
-            backgroundColor: 'rgba(127, 127, 127, .2)'
-          }}
-        >
-          <p>Hello</p>
-        </div>
-      </Element>
-      <Element name={'test2'}>
-        <div
-          style={{
-            width: '1280px',
-            height: '615px',
-            backgroundColor: 'rgba(127, 127, 127, .2)'
-          }}
-        >
-          <p>Hello</p>
-        </div>
-      </Element>
-      <Element name={'test3'}>
-        <div
-          style={{
-            width: '1280px',
-            height: '615px',
-            backgroundColor: 'rgba(127, 127, 127, .2)'
-          }}
-        >
-          <p>Hello</p>
-        </div>
-      </Element>
+      </HeaderWrapper>
+      {/* Карусель */}
+      <CarouselConnected />
+      <FooterWrapper>
+        <FooterScheduleWrapper>
+          <Element name={'schedule'}>
+            <FooterSchedule>
+            </FooterSchedule>
+          </Element>
+        </FooterScheduleWrapper>
+        <FooterMapWrapper>
+          <Element name={'map'}>
+            <FooterMap>
+            </FooterMap>
+          </Element>
+        </FooterMapWrapper>
+        <FooterToTop onClick={handlerToTop} />
+      </FooterWrapper>
     </MainWrapper>
   );
 };

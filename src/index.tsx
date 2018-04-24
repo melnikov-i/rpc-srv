@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import MainUsage from '@src/usage/MainUsage';
 
-
 const Root: JSX.Element = (
   <Provider store={ store }>
     <MainUsage />
@@ -13,5 +12,5 @@ const Root: JSX.Element = (
 );
 
 render(
-  Root, document.getElementById('app')
+  Root, document.getElementById('app'),
 );

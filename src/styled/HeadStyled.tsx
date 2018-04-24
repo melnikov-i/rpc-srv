@@ -8,32 +8,28 @@ import {
   HEADER_BACKGROUND_COLOR,
   MAIN_CONTAINER_MAX_WIDTH,
   HEADER_ACCENT_COLOR,
-  HEADER_LOGO_WIDTH
+  HEADER_LOGO_WIDTH,
 } from '@src/styled';
-
 
 /**
  * Корневой контейнер шапки сайта
  *
  * @return {React.Component}
  */
-
 export const HeaderWrapper = styled.div`
   position: fixed;
   display: block;
   margin-top: -100px;
   max-width: ${ MAIN_CONTAINER_MAX_WIDTH };
-  width: calc(100% - 15px);
+  width: 100%;
   height: 100px;
   background-color: ${ HEADER_BACKGROUND_COLOR };
   z-index: 100;
 `;
 
-
 /**
  * Контейнер логотипа
  */
-
 export const HeaderLogo = styled.div`
   width: ${ HEADER_LOGO_WIDTH };
   height: 100px;
@@ -43,11 +39,9 @@ export const HeaderLogo = styled.div`
 background-color: rgba(127, 127, 127, .2);
 `;
 
-
 /**
  * Обертка контейнера элементов шапки сайта
  */
-
 export const HeaderElementsAndMenuWrapper = styled.div`
   width: calc(100% - ${ HEADER_LOGO_WIDTH });
   height: 100px;
@@ -55,26 +49,20 @@ export const HeaderElementsAndMenuWrapper = styled.div`
   vertical-align: top;
 
 `;
-// background-color: rgba(127, 0, 0, .4);
-
 
 /**
  * Обертка блока элементов верхнего меню шапки
  */
-
 export const HeaderElementsWrapper = styled.div`
   width: 100%;
   height: 65px;
   position: relative;
 
 `;
-// background-color: rgba(0, 127, 0, .4);
-
 
 /**
  * Обертка для логотипов производителей автомобилей
  */
-
 export const HeaderCarsManufacturers = styled.div`
   height: 65px;
   display: inline-block;
@@ -83,21 +71,17 @@ export const HeaderCarsManufacturers = styled.div`
   box-sizing: border-box;
 `;
 
-
 /**
  * Изображения логотипов компаний автопроизводителей
  */
-
 export const HeaderCarsManufacturersLogo = styled.img`
   height: 45px;
   margin-right: 10px;
 `;
 
-
 /**
  * Обертка для контейнера верхнего меню
  */
-
 export const HeaderTopMenuWrapper = styled.div`
   height: 36px;
   position: absolute;
@@ -105,23 +89,17 @@ export const HeaderTopMenuWrapper = styled.div`
   right: 0;
 
 `;
-// background-color: rgba(0, 0, 255, .4);
-// min-width: 100px;
-
 
 /**
  * Контейнер верхнего меню
  */
-
 export const HeaderTopMenuList = styled.ul`
   width: 100%;
 `;
 
-
 /**
  * Элемент верхнего меню
  */
-
 export const HeaderTopMenuListItem = styled.li`
   list-style-type: none;
   list-style-position: inside;
@@ -129,20 +107,16 @@ export const HeaderTopMenuListItem = styled.li`
   vertical-align: top;
 `;
 
-
 /**
  * Главный элемент верхнего меню
  */
-
 export const HeaderTopMenuAnchor = styled.a`
   text-decoration: none;
 `;
 
-
 /**
  * Обертка содержимого для текста вернего меню
  */
-
 export const HeaderTopMenuTextContentWrapper = styled.div`
   display: block;
   position: relative;
@@ -168,11 +142,9 @@ export const HeaderTopMenuTextContentWrapper = styled.div`
   }
 `;
 
-
 /**
  * Обертка содержимого для ссылки верхнего меню
  */
-
 export const HeaderTopMenuAnchorContentWrapper =
 HeaderTopMenuTextContentWrapper.extend`
   cursor: pointer;
@@ -191,17 +163,14 @@ HeaderTopMenuTextContentWrapper.extend`
   &:hover {
     &::before {
       width: 100%;
-      opacity: 1;      
+      opacity: 1;
     }
   }
 `;
 
-
-
 /**
  * Блок с текстом и иконкой
  */
-
 export const HeaderTopMenuAnchorContent = styled.div`
   height: 20px;
   &::before {
@@ -215,11 +184,9 @@ export const HeaderTopMenuAnchorContent = styled.div`
   }
 `;
 
-
 /**
  * Обертка текстовых блоков
  */
-
 export const HeaderTopMenuAnchorTextWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
@@ -228,7 +195,6 @@ export const HeaderTopMenuAnchorTextWrapper = styled.div`
 /**
  * Верхний текстовый блок с обычным шрифтом
  */
-
 export const HeaderTopMenuAnchorLightText = styled.span`
   display: block;
   font-size: 9px;
@@ -236,11 +202,9 @@ export const HeaderTopMenuAnchorLightText = styled.span`
 `;
   // line-height: .9;
 
-
 /**
  * Нижний текстовый блок с жирным шрифтом
  */
-
 export const HeaderTopMenuAnchorBoldText = styled.span`
   display: block;
   font-size: 10px;
@@ -249,22 +213,18 @@ export const HeaderTopMenuAnchorBoldText = styled.span`
   line-height: .9;
 `;
 
-
 /**
  * Текстовый блок для большого текста
  */
-
 export const HeaderTopMenuText = styled.div`
   display: block;
   font-size: 18px;
   color: #fff;
-  
 `;
 
 /**
  * Обертка основного меню страницы
  */
-
 export const HeaderMenuWrapper = styled.div`
   width: 100%;
   height: 35px;

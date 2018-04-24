@@ -1,33 +1,33 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Dispatch, RootState } from '@src/redux';
+import { Dispatch, IRootState } from '@src/redux';
 
 import { Carousel } from '@src/components';
 
 import {
-  asyncActionCreators
+  asyncActionCreators,
 } from '@src/redux/carousel';
 
 import {
-  CarouselInterface
+  ICarouselInterface,
 } from '@src/interfaces';
 
 import {
-  CarouselCollectionSelector
+  CarouselCollectionSelector,
 } from '@src/selectors';
 
-const mapStateToProps = createStructuredSelector<RootState, {
-    CarouselCollection: CarouselInterface
+const mapStateToProps = createStructuredSelector<IRootState, {
+    CarouselCollection: ICarouselInterface,
   }>({
     CarouselCollection: CarouselCollectionSelector,
   });
 
 const mapDispatchToProps = ( dispatch: Dispatch ) => bindActionCreators({
-  makeCarouselAnimationContinue: 
+  makeCarouselAnimationContinue:
     asyncActionCreators.makeCarouselAnimationContinue,
 }, dispatch);
 
 export const CarouselConnected = connect(
-    mapStateToProps, mapDispatchToProps
+    mapStateToProps, mapDispatchToProps,
   )(Carousel);

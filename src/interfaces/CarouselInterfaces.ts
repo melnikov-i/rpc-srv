@@ -1,10 +1,10 @@
-export interface CarouselItemInterface {
+export interface ICarouselItemInterface {
   image: any,
   header: string,
   text: string,
 }
 
-export interface CarouselInterface {
+export interface ICarouselInterface {
   direction: boolean,
-  items: CarouselItemInterface[],
+  items: ICarouselItemInterface[],
 }

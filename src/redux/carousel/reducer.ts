@@ -1,23 +1,22 @@
 import { combineReducers } from 'redux';
 import {
-  CarouselInterface
+  ICarouselInterface,
 } from '@src/interfaces';
 
 import {
   CAROUSEL_ANIMATION_CONTINUE,
   CAROUSEL_TRANSFORM_CHANGE,
-  CAROUSEL_ANIMATION_CHANGE_DIRECTION,
 } from '@src/redux/carousel';
 
 export type State = {
-  readonly CarouselCollection: CarouselInterface,
+  readonly CarouselCollection: ICarouselInterface,
 };
 
 const slide1 = require('@src/images/slide_1.png');
 const slide2 = require('@src/images/slide_2.png');
 const slide3 = require('@src/images/slide_3.png');
 
-const CarouselInit: CarouselInterface = {
+const CarouselInit: ICarouselInterface = {
   direction: true,
   items: [
     {
@@ -36,7 +35,7 @@ const CarouselInit: CarouselInterface = {
       text: '',
     },
   ],
-}
+};
 
 export const reducer = combineReducers({
   CarouselCollection: ( state = CarouselInit, action ) => {
@@ -48,13 +47,8 @@ export const reducer = combineReducers({
           ...state,
           ['transform']: action.payload,
         };
-      case CAROUSEL_ANIMATION_CHANGE_DIRECTION:
-        return {
-          ...state,
-          ['direction']: action.payload,
-        }
       default:
         return state;
     }
-  }
+  },
 });

@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
-
 /**
  * Внешняя обертка для карусели. В связке с внутренней
  * позволяет задавать относительную высоту блока
- * 
  * @returns {React.Component}
  */
-
 export const CarouselWrapper = styled.div`
   position: relative;
   display: block;
@@ -20,13 +17,11 @@ export const CarouselWrapper = styled.div`
   }
 `;
 
-
 /**
  * Внутренняя обертка карусели. В сумме с внешней задают высоту блока
  * равную половине ширины.
  */
-
-interface CarouselInnerWrapperProps {
+interface ICarouselInnerWrapperProps {
   width: string,
 }
 
@@ -36,11 +31,13 @@ export const CarouselInnerWrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  width: ${(props: CarouselInnerWrapperProps) => props.width + '00%'};
+  width: ${(props: ICarouselInnerWrapperProps) => props.width + '00%'};
   transform: translateX(-25%);
   `;
-  
-  
+
+/**
+ * Стрелка назад
+ */
 export const CarouselInnerWrapperBackwardAnchor = styled.div`
   &::before {
     content: "\\f104";
@@ -62,9 +59,10 @@ export const CarouselInnerWrapperBackwardAnchor = styled.div`
     cursor: pointer;
   }
 `;
-  
 
-
+/**
+ * Стрелка вперед
+ */
 export const CarouselInnerWrapperForwardAnchor = styled.div`
   &::before {
     content: "\\f105";
@@ -87,12 +85,10 @@ export const CarouselInnerWrapperForwardAnchor = styled.div`
   }
 `;
 
-        
 /**
  * Внешний блок слайда карусели.
  */
-
-interface CarouselItemProps {
+interface ICarouselItemProps {
   width: number,
   image: any,
 }
@@ -100,12 +96,9 @@ interface CarouselItemProps {
 export const CarouselItem = styled.div`
   display: inline-block;
   vertical-align: top;
-  width: ${(props: CarouselItemProps) => String(100 / props.width) + '%'};
+  width: ${(props: ICarouselItemProps) => String(100 / props.width) + '%'};
   height: 100%;
-  background-image: url(${(props: CarouselItemProps) => (props.image)});
+  background-image: url(${(props: ICarouselItemProps) => (props.image)});
   background-size: cover;
   background-position: center center;
-
 `;
-        // width: 100%;
-  // height: 100%;

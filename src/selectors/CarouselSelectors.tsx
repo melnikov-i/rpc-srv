@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-import { RootState } from '@src/redux';
+import { IRootState } from '@src/redux';
 
 export const CarouselCollectionSelector = createSelector(
-  ( state: RootState ) => state.carousel.CarouselCollection,
+  ( state: IRootState ) => state.carousel.CarouselCollection,
   ( CarouselCollection ) => CarouselCollection,
 );

@@ -11,14 +11,17 @@ import {} from '@src/interfaces';
 
 import {
   IndexOfActiveItemSelector,
+  PriceMenuCollectionSelector,
   TableRowsSelector,
 } from '@src/selectors';
 
 const mapStateToProps = createStructuredSelector<IRootState, {
     IndexOfActiveItem: number,
+    PriceMenuCollection: string[],
     TableRows: string[], // потом доработать тип
   }>({
     IndexOfActiveItem: IndexOfActiveItemSelector,
+    PriceMenuCollection: PriceMenuCollectionSelector,
     TableRows: TableRowsSelector,
   });
 

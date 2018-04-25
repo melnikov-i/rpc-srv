@@ -6,8 +6,17 @@ import {
 
 export type State = {
   readonly IndexOfActiveItem: number,
+  readonly PriceMenuCollection: string[],
   readonly TableRows: string[],
 };
+
+const PriceMenuCollectionInit: string[] = [
+  'ДВИГАТЕЛЬ',
+  'ТРАНСМИССИЯ',
+  'УПРАВЛЕНИЕ',
+  'ХОДОВАЯ ЧАСТЬ',
+  'ШИНОМОНТАЖ',
+];
 
 const TableRowsInit = [
   'Данные для вкладки ДВИГАТЕЛИ',
@@ -22,6 +31,12 @@ export const reducer = combineReducers({
     switch ( action.type ) {
       case CHANGE_INDEX_OF_ACTIVE_ITEM:
         return action.payload;
+      default:
+        return state;
+    }
+  },
+  PriceMenuCollection: ( state = PriceMenuCollectionInit, action ) => {
+    switch ( action.type ) {
       default:
         return state;
     }

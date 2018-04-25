@@ -9,6 +9,7 @@ import {
 
 interface IPriceProps {
   IndexOfActiveItem: number,
+  PriceMenuCollection: string[],
   TableRows: string[], // потом доработать тип
   changeIndexOfActiveItem: ( payload: number ) => any,
 }
@@ -16,19 +17,10 @@ interface IPriceProps {
 export const Price: React.SFC<IPriceProps> = ( props ) => {
   const {
     IndexOfActiveItem,
+    PriceMenuCollection,
     TableRows,
     changeIndexOfActiveItem,
   } = props;
-
-  console.log('Index:', TableRows);
-
-  const Menu: string[] = [
-    'ДВИГАТЕЛЬ',
-    'ТРАНСМИССИЯ',
-    'УПРАВЛЕНИЕ',
-    'ХОДОВАЯ ЧАСТЬ',
-    'ШИНОМОНТАЖ',
-  ];
 
   const handlerPriceMenuAnchor =
   (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -41,10 +33,10 @@ export const Price: React.SFC<IPriceProps> = ( props ) => {
     }
   };
 
-  const ValidOutput: JSX.Element = (
+  return (
     <PriceWrapper>
       <PriceMenu>
-        {Menu.map((e, i, a) => (
+        {PriceMenuCollection.map((e, i, a) => (
           <PriceMenuItem
             width={String(100 / a.length)}
             key={i}
@@ -63,6 +55,4 @@ export const Price: React.SFC<IPriceProps> = ( props ) => {
       </div>
     </PriceWrapper>
   );
-
-  return ValidOutput;
 };

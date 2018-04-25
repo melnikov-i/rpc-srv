@@ -7,6 +7,11 @@ export const IndexOfActiveItemSelector = createSelector(
   ( IndexOfActiveItem ) => IndexOfActiveItem,
 );
 
+export const PriceMenuCollectionSelector = createSelector(
+  ( state: IRootState ) => state.price.PriceMenuCollection,
+  ( PriceMenuCollection ) => PriceMenuCollection,
+);
+
 export const TableRowsSelector = createSelector(
   ( state: IRootState ) => state.price.TableRows,
   ( TableRows ) => TableRows,

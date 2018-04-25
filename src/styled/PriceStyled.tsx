@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {
   HEADER_BACKGROUND_COLOR,
-  // HEADER_ACCENT_COLOR,
+  HEADER_ACCENT_COLOR,
 } from '@src/styled';
 
 export const PriceWrapper = styled.div`
@@ -36,7 +36,9 @@ export const PriceMenuAnchor = styled.a`
   display: block;
   position: relative;
   box-sizing: border-box;
-  line-height: 40px;
+  line-height: ${(props: IPriceMenuAnchorProps) => (
+    props.isActive ? '37px' : '40px'
+  )};
   font-size: 12px;
   white-space: pre-line;
   text-align: center;
@@ -45,7 +47,29 @@ export const PriceMenuAnchor = styled.a`
   )};
   cursor: pointer;
   border-right: ${(props: IPriceMenuAnchorProps) => (
-    props.isLast ? 'none' :
-      props.isActive ? 'none' : '1px solid #fff'// + HEADER_ACCENT_COLOR
+    props.isLast ? 'none' : '1px solid ' + HEADER_ACCENT_COLOR
   )};
+  border-top: ${(props: IPriceMenuAnchorProps) => (
+    props.isActive ? '3px solid ' + HEADER_ACCENT_COLOR : 'none'
+  )};
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: ${(props: IPriceMenuAnchorProps) => (
+      props.isActive ? 'none' : 'width .25s ease-in'
+    )};
+    background-color: ${ HEADER_ACCENT_COLOR };
+    width: 0;
+    height: 3px;
+  }
+  &:hover {
+    &::before {
+      width: ${(props: IPriceMenuAnchorProps) => (
+        props.isActive ? '0' : '100%'
+      )};
+    }
+  }
 `;

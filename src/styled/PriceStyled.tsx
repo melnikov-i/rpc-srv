@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+import {
+  HEADER_BACKGROUND_COLOR,
+  // HEADER_ACCENT_COLOR,
+} from '@src/styled';
+
 export const PriceWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 185px);
@@ -20,6 +25,11 @@ export const PriceMenuItem = styled.li`
   list-style-position: inside;
 `;
 
+interface IPriceMenuAnchorProps {
+  isActive: boolean,
+  isLast: boolean,
+}
+
 export const PriceMenuAnchor = styled.a`
   text-decoration: none;
   height: 40px;
@@ -30,4 +40,12 @@ export const PriceMenuAnchor = styled.a`
   font-size: 12px;
   white-space: pre-line;
   text-align: center;
+  background-color: ${(props: IPriceMenuAnchorProps) => (
+    props.isActive ? '#fff' : HEADER_BACKGROUND_COLOR
+  )};
+  cursor: pointer;
+  border-right: ${(props: IPriceMenuAnchorProps) => (
+    props.isLast ? 'none' :
+      props.isActive ? 'none' : '1px solid #fff'// + HEADER_ACCENT_COLOR
+  )};
 `;

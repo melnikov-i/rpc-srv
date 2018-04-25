@@ -35,8 +35,34 @@ export const HeaderLogo = styled.div`
   height: 100px;
   display: inline-block;
   vertical-align: top;
+  padding: 10px;
+  box-sizing: border-box;
 
-background-color: rgba(127, 127, 127, .2);
+`;
+
+export const HeaderLogoTextBlock = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  width: 150px;
+  margin-left: 8px;
+  height: 80px;
+`;
+
+export const HeaderLogoCompanyName = styled.span`
+  display: block;
+  height: 40px;
+  line-height: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+`;
+
+export const HeaderLogoSlogan = styled.span`
+  display: block;
+  height: 40px;
+  line-height: 25px;
+  font-size: 14px;
+  color: ${ HEADER_ACCENT_COLOR };
 `;
 
 /**
@@ -225,9 +251,51 @@ export const HeaderTopMenuText = styled.div`
 /**
  * Обертка основного меню страницы
  */
-export const HeaderMenuWrapper = styled.div`
-  width: 100%;
-  height: 35px;
+// export const HeaderMenuWrapper = styled.div`
+//   width: 100%;
+//   background-color: rgba(0, 0, 127, .4);
+//   `;
 
-background-color: rgba(0, 0, 127, .4);
+export const HeaderMenu = styled.ul`
+  width: 100%;
+
+`;
+
+export const HeaderMenuItem = styled.li`
+  list-style-type: none;
+  list-style-position: inside;
+  display: inline-block;
+  vertical-align: top;
+`;
+
+export const HeaderMenuAnchorWrapper = styled.div`
+`;
+
+export const HeaderMenuAnchor = styled.a`
+  display: block;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 35px;
+  color: #fff;
+  height: 35px;
+  position: relative;
+  padding: 0 20px 0 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width .25s ease-in;
+    background-color: ${ HEADER_ACCENT_COLOR };
+    width: 0;
+    height: 4px;
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
 `;

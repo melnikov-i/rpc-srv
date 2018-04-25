@@ -10,6 +10,9 @@ import {
   MainWrapper,
   HeaderWrapper,
   HeaderLogo,
+  HeaderLogoTextBlock,
+  HeaderLogoCompanyName,
+  HeaderLogoSlogan,
   HeaderElementsAndMenuWrapper,
   HeaderElementsWrapper,
   HeaderCarsManufacturers,
@@ -25,18 +28,24 @@ import {
   HeaderTopMenuAnchorLightText,
   HeaderTopMenuAnchorBoldText,
   HeaderTopMenuText,
+  HeaderMenu,
+  HeaderMenuItem,
+  HeaderMenuAnchor,
 
-  HeaderMenuWrapper,
+  MainBlockHeader,
 
   FooterWrapper,
+  Footer,
   FooterScheduleWrapper,
   FooterSchedule,
   FooterMapWrapper,
   FooterMap,
   FooterToTop,
+  FooterHeader,
 } from '@src/styled';
 
 import CarouselConnected from '@src/usage/CarouselUsage';
+import PriceConnected from '@src/usage/PriceUsage';
 
 /**
  * Импорт изображений
@@ -44,6 +53,7 @@ import CarouselConnected from '@src/usage/CarouselUsage';
 const Renault = require('@src/images/renault');
 const Peugeot = require('@src/images/peugeot');
 const Citroen = require('@src/images/citroen');
+const Logo = require('@src/images/logo');
 
 /**
  * Импорт шрифтов FontAwesome 
@@ -103,7 +113,25 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
     },
   ];
 
-  const handlerTopMenuAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  /**
+   * Данные для основного меню
+   */
+  const MainMenuData: any[] = [
+    {
+      text: 'О НАС',
+      to: 'about',
+    },
+    {
+      text: 'УСЛУГИ И ЦЕНЫ',
+      to: 'price',
+    },
+    {
+      text: 'ГАРАНТИЯ',
+      to: 'warranty',
+    },
+  ];
+
+  const handlerMenuAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     const elementName: string =
@@ -112,6 +140,7 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
       smooth: 'easeInOutQart',
       duration: 1000,
       delay: 0,
+      offset: -120,
     });
   };
 
@@ -125,6 +154,15 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
       <HeaderWrapper>
         {/* Логотип сайта */}
         <HeaderLogo>
+          <img src={Logo} alt={'RPC-Servis'} />
+          <HeaderLogoTextBlock>
+          <HeaderLogoCompanyName>
+            {'RPC-Servis'}
+          </HeaderLogoCompanyName>
+          <HeaderLogoSlogan>
+            {'Качество меняет все!'}
+          </HeaderLogoSlogan>
+          </HeaderLogoTextBlock>
         </HeaderLogo>
         {/* Все, что справа от логотипа */}
         <HeaderElementsAndMenuWrapper>
@@ -148,7 +186,7 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
                     {(typeof(e.text) === 'object') ? (
                       <HeaderTopMenuAnchor
                         data-to={e.to}
-                        onClick={handlerTopMenuAnchor}
+                        onClick={handlerMenuAnchor}
                       >
                         <HeaderTopMenuAnchorContentWrapper
                             isLast={i + 1 === a.length}
@@ -188,25 +226,64 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
             </HeaderTopMenuWrapper>
           </HeaderElementsWrapper>
           {/* Блок меню страницы */}
-          <HeaderMenuWrapper>
-          </HeaderMenuWrapper>
+          <HeaderMenu>
+            {MainMenuData.map((e: any, i: number) => (
+              <HeaderMenuItem key={i}>
+                <HeaderMenuAnchor
+                  onClick={handlerMenuAnchor}
+                  data-to={e.to}
+                >
+                  {e.text}
+                </HeaderMenuAnchor>
+              </HeaderMenuItem>
+            ))}
+          </HeaderMenu>
         </HeaderElementsAndMenuWrapper>
       </HeaderWrapper>
       {/* Карусель */}
       <CarouselConnected />
+      <Element name={'about'}>
+        <MainBlockHeader>{'О НАС'}</MainBlockHeader>
+      </Element>
+      <Element name={'price'}>
+        <MainBlockHeader>{'УСЛУГИ И ЦЕНЫ'}</MainBlockHeader>
+        <PriceConnected />
+      </Element>
+      <Element name={'warranty'}>
+        <MainBlockHeader>{'ГАРАНТИЯ'}</MainBlockHeader>
+      </Element>
       <FooterWrapper>
-        <FooterScheduleWrapper>
-          <Element name={'schedule'}>
-            <FooterSchedule>
-            </FooterSchedule>
-          </Element>
-        </FooterScheduleWrapper>
-        <FooterMapWrapper>
-          <Element name={'map'}>
-            <FooterMap>
-            </FooterMap>
-          </Element>
-        </FooterMapWrapper>
+        <Footer>
+          <FooterScheduleWrapper>
+            <Element name={'schedule'}>
+              <FooterSchedule>
+                <FooterHeader>
+                  {'ГРАФИК РАБОТЫ'}
+                </FooterHeader>
+              </FooterSchedule>
+            </Element>
+          </FooterScheduleWrapper>
+          <FooterMapWrapper>
+            <Element name={'map'}>
+              <FooterMap>
+                <FooterHeader>
+                  {'СХЕМА ПРОЕЗДА'}
+                </FooterHeader>
+                <iframe
+                  src={'https://yandex.ru/map-widget/v1/?um=constructor%3A16d16df9c'
+                  + 'f81a35778785cfecef37bf2d35d6c74afe533d7954ce052df7b2492&amp;so'
+                  + 'urce=constructor'}
+                  height={'410'}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    margin: '10px 0',
+                  }}
+                ></iframe>
+              </FooterMap>
+            </Element>
+          </FooterMapWrapper>
+        </Footer>
         <FooterToTop onClick={handlerToTop} />
       </FooterWrapper>
     </MainWrapper>

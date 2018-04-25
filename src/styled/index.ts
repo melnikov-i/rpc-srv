@@ -3,3 +3,4 @@ export * from './HeadStyled';
 export * from './MainStyled';
 export * from './CarouselStyled';
 export * from './FooterStyled';
+export * from './PriceStyled';

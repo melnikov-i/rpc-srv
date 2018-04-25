@@ -8,7 +8,7 @@ import styled from 'styled-components';
 export const CarouselWrapper = styled.div`
   position: relative;
   display: block;
-  margin-top: 100px;
+  margin: 100px 0 30px;
   overflow: hidden;
   &::before {
     content: "";

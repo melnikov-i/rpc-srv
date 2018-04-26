@@ -7,7 +7,9 @@ import { Price } from '@src/components';
 
 import { syncActionCreators } from '@src/redux/price';
 
-import {} from '@src/interfaces';
+import {
+  IPriceContentItem,
+} from '@src/interfaces';
 
 import {
   IndexOfActiveItemSelector,
@@ -18,7 +20,7 @@ import {
 const mapStateToProps = createStructuredSelector<IRootState, {
     IndexOfActiveItem: number,
     PriceMenuCollection: string[],
-    TableRows: string[], // потом доработать тип
+    TableRows: IPriceContentItem[],
   }>({
     IndexOfActiveItem: IndexOfActiveItemSelector,
     PriceMenuCollection: PriceMenuCollectionSelector,

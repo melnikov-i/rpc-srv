@@ -90,10 +90,10 @@ export const HeaderElementsWrapper = styled.div`
  * Обертка для логотипов производителей автомобилей
  */
 export const HeaderCarsManufacturers = styled.div`
-  height: 65px;
+  height: 45px;
   display: inline-block;
   vertical-align: top;
-  padding-top: 10px;
+  padding: 10px 0 0 20px;
   box-sizing: border-box;
 `;
 
@@ -101,7 +101,7 @@ export const HeaderCarsManufacturers = styled.div`
  * Изображения логотипов компаний автопроизводителей
  */
 export const HeaderCarsManufacturersLogo = styled.img`
-  height: 45px;
+  height: 40px;
   margin-right: 10px;
 `;
 
@@ -147,9 +147,8 @@ export const HeaderTopMenuTextContentWrapper = styled.div`
   display: block;
   position: relative;
   padding: ${ ( props: { isLast: boolean } ) => (
-      props.isLast ? '8px 30px 8px 10px' : '8px 10px'
-    )
-  };
+    props.isLast ? '8px 30px 8px 10px' : '8px 10px'
+  )};
   height: 36px;
   box-sizing: border-box;
   &::after {
@@ -226,7 +225,6 @@ export const HeaderTopMenuAnchorLightText = styled.span`
   font-size: 9px;
   color: #fff;
 `;
-  // line-height: .9;
 
 /**
  * Нижний текстовый блок с жирным шрифтом
@@ -251,10 +249,6 @@ export const HeaderTopMenuText = styled.div`
 /**
  * Обертка основного меню страницы
  */
-// export const HeaderMenuWrapper = styled.div`
-//   width: 100%;
-//   background-color: rgba(0, 0, 127, .4);
-//   `;
 
 export const HeaderMenu = styled.ul`
   width: 100%;
@@ -294,6 +288,7 @@ export const HeaderMenuAnchor = styled.a`
     height: 4px;
   }
   &:hover {
+    color: ${ HEADER_ACCENT_COLOR };
     &::before {
       width: 100%;
     }

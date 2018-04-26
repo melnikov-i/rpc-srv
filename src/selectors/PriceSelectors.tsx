@@ -13,6 +13,9 @@ export const PriceMenuCollectionSelector = createSelector(
 );
 
 export const TableRowsSelector = createSelector(
-  ( state: IRootState ) => state.price.TableRows,
-  ( TableRows ) => TableRows,
+  [
+    ( state: IRootState ) => state.price.TableRows,
+    ( state: IRootState ) => state.price.IndexOfActiveItem,
+  ],
+  ( TableRows, IndexOfActiveItem ) => TableRows[IndexOfActiveItem],
 );

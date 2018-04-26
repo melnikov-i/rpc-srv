@@ -1,16 +1,26 @@
 import * as React from 'react';
 
 import {
+  IPriceContentItem,
+} from '@src/interfaces';
+
+import {
   PriceWrapper,
   PriceMenu,
   PriceMenuItem,
   PriceMenuAnchor,
+  PriceMenuAnchorText,
+  PriceHeader,
+  PriceTable,
+  PriceTableRow,
+  PriceTableHeadCol,
+  PriceTableBodyCol,
 } from '@src/styled';
 
 interface IPriceProps {
   IndexOfActiveItem: number,
   PriceMenuCollection: string[],
-  TableRows: string[], // потом доработать тип
+  TableRows: IPriceContentItem[],
   changeIndexOfActiveItem: ( payload: number ) => any,
 }
 
@@ -39,20 +49,56 @@ export const Price: React.SFC<IPriceProps> = ( props ) => {
         {PriceMenuCollection.map((e, i, a) => (
           <PriceMenuItem
             width={String(100 / a.length)}
-            key={i}
+            key={'priceMenuCollection' + i}
           >
             <PriceMenuAnchor
               isActive={i === IndexOfActiveItem}
               isLast={i === a.length - 1}
               data-id={i}
               onClick={handlerPriceMenuAnchor}
-            >{e}</PriceMenuAnchor>
+            >
+              <PriceMenuAnchorText
+                isActive={i === IndexOfActiveItem}
+              >{e}</PriceMenuAnchorText>
+            </PriceMenuAnchor>
           </PriceMenuItem>
         ))}
       </PriceMenu>
-      <div>
-        <p style={{fontSize: '14px'}}>{TableRows[IndexOfActiveItem]}</p>
-      </div>
+      {TableRows.map((e: IPriceContentItem, i: number) => (
+        <div key={'tableRows' + i}>
+          <PriceHeader>{e.header}</PriceHeader>
+          <PriceTable>
+            <thead>
+              <PriceTableRow>
+                <PriceTableHeadCol
+                  isEven={true}
+                >
+                  {'Наименование работы'}
+                </PriceTableHeadCol>
+                <PriceTableHeadCol
+                  isEven={false}
+                >
+                  {'Цена'}
+                </PriceTableHeadCol>
+              </PriceTableRow>
+            </thead>
+            <tbody>
+              {e.rows.map((row: string[], j: number) => (
+                <PriceTableRow key={'rows' + j}>
+                  {row.map((col: string, k: number) => (
+                    <PriceTableBodyCol
+                      key={'cols' + k}
+                      isEven={k % 2 === 0}
+                    >
+                      {col}
+                    </PriceTableBodyCol>
+                  ))}
+                </PriceTableRow>
+              ))}
+            </tbody>
+          </PriceTable>
+        </div>
+      ))}
     </PriceWrapper>
   );
 };

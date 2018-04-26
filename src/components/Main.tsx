@@ -42,6 +42,7 @@ import {
   FooterMap,
   FooterToTop,
   FooterHeader,
+  FooterScheduleRow,
 } from '@src/styled';
 
 import CarouselConnected from '@src/usage/CarouselUsage';
@@ -74,6 +75,7 @@ injectGlobal`
     font-size: 0;
     border: 0;
     font-family: 'Roboto', sans-serif;
+    color: #3c3947;
   }
 
   @font-face {
@@ -117,18 +119,18 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
    * Данные для основного меню
    */
   const MainMenuData: any[] = [
-    {
-      text: 'О НАС',
-      to: 'about',
-    },
+    // {
+    //   text: 'О НАС',
+    //   to: 'about',
+    // },
     {
       text: 'УСЛУГИ И ЦЕНЫ',
       to: 'price',
     },
-    {
-      text: 'ГАРАНТИЯ',
-      to: 'warranty',
-    },
+    // {
+    //   text: 'ГАРАНТИЯ',
+    //   to: 'warranty',
+    // },
   ];
 
   const handlerMenuAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -243,14 +245,14 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
       {/* Карусель */}
       <CarouselConnected />
       <Element name={'about'}>
-        <MainBlockHeader>{'О НАС'}</MainBlockHeader>
+        {/* <MainBlockHeader>{'О НАС'}</MainBlockHeader> */}
       </Element>
       <Element name={'price'}>
         <MainBlockHeader>{'УСЛУГИ И ЦЕНЫ'}</MainBlockHeader>
         <PriceConnected />
       </Element>
       <Element name={'warranty'}>
-        <MainBlockHeader>{'ГАРАНТИЯ'}</MainBlockHeader>
+        {/* <MainBlockHeader>{'ГАРАНТИЯ'}</MainBlockHeader> */}
       </Element>
       <FooterWrapper>
         <Footer>
@@ -260,6 +262,12 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
                 <FooterHeader>
                   {'ГРАФИК РАБОТЫ'}
                 </FooterHeader>
+                <FooterScheduleRow icon={'f041'}>
+                  {'Санкт-Петербург, Богатырский пр., д. 16'}
+                </FooterScheduleRow>
+                <FooterScheduleRow icon={'f073'}>
+                  {'Пн-Пт: 9:00 - 21:00 / Сб-Вс: 10:00 - 19:00'}
+                </FooterScheduleRow>
               </FooterSchedule>
             </Element>
           </FooterScheduleWrapper>

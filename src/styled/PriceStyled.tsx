@@ -9,7 +9,6 @@ export const PriceWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 185px);
   margin-bottom: 30px;
-  background-color: #ccc;
 `;
 
 export const PriceMenu = styled.ul`
@@ -36,12 +35,7 @@ export const PriceMenuAnchor = styled.a`
   display: block;
   position: relative;
   box-sizing: border-box;
-  line-height: ${(props: IPriceMenuAnchorProps) => (
-    props.isActive ? '37px' : '40px'
-  )};
-  font-size: 12px;
-  white-space: pre-line;
-  text-align: center;
+  overflow: hidden;
   background-color: ${(props: IPriceMenuAnchorProps) => (
     props.isActive ? '#fff' : HEADER_BACKGROUND_COLOR
   )};
@@ -72,4 +66,54 @@ export const PriceMenuAnchor = styled.a`
       )};
     }
   }
+`;
+
+export const PriceMenuAnchorText = styled.span`
+  color: ${(props: {isActive: boolean}) => (
+    props.isActive ? '#3c3947' : '#fff'
+  )};
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: pre-line;
+  text-align: center;
+`;
+
+export const PriceHeader = styled.h4`
+  font-size: 14px;
+  margin: 20px;
+`;
+
+export const PriceTable = styled.table`
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  border-spacing: 0;
+`;
+
+export const PriceTableRow = styled.tr`
+`;
+
+export const PriceTableHeadCol = styled.td`
+  font-size: 14px;
+  padding: 5px 10px;
+  width: ${(props: {isEven: boolean}) => (
+    props.isEven ? '85%' : '15%'
+  )};
+  text-align: ${(props: {isEven: boolean}) => (
+    props.isEven ? 'left' : 'center'
+  )};
+`;
+
+export const PriceTableBodyCol = styled.td`
+  font-size: 14px;
+  border-top: 1px solid #e7eaec;
+  padding: 5px 10px;
+  width: ${(props: {isEven: boolean}) => (
+    props.isEven ? '85%' : '15%'
+  )};
+  text-align: ${(props: {isEven: boolean}) => (
+    props.isEven ? 'left' : 'center'
+  )};
 `;

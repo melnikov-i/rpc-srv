@@ -10,12 +10,29 @@ export const MainWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const MainBlockHeader = styled.h4`
+export const MainBlockHeader = styled.h2`
   margin-bottom: 30px;
   font-size: 24px;
   letter-spacing: 1.6px;
   line-height: 36px;
-  color: #3c3947;
   font-weight: 400;
   text-align: center;
+`;
+
+export const FooterScheduleRow = styled.p`
+  font-size: 14px;
+  line-height: 30px;
+  &::before {
+    content: "\\${(props: {icon: string}) => (props.icon)}";
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-size: 22px;
+    margin-right: 5px;
+    text-align: center;
+  }
 `;

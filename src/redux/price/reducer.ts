@@ -1,29 +1,50 @@
 import { combineReducers } from 'redux';
 
 import {
+  IPriceContentItem,
+} from '@src/interfaces';
+
+import {
   CHANGE_INDEX_OF_ACTIVE_ITEM,
 } from '@src/redux/price';
+
+import {
+  Engine,
+  GearBox,
+  Diagnostic,
+  BrakingSystem,
+  Steering,
+  Transmission,
+  Chassis,
+  TireFitting,
+} from '@src/initial';
 
 export type State = {
   readonly IndexOfActiveItem: number,
   readonly PriceMenuCollection: string[],
-  readonly TableRows: string[],
+  readonly TableRows: IPriceContentItem[][],
 };
 
 const PriceMenuCollectionInit: string[] = [
   'ДВИГАТЕЛЬ',
+  'КПП',
+  'ДИАГНОСТИКА',
+  'ТОРМОЗНАЯ СИСТЕМА',
+  'РУЛЕВОЕ УПРАВЛЕНИЕ',
   'ТРАНСМИССИЯ',
-  'УПРАВЛЕНИЕ',
   'ХОДОВАЯ ЧАСТЬ',
   'ШИНОМОНТАЖ',
 ];
 
-const TableRowsInit = [
-  'Данные для вкладки ДВИГАТЕЛИ',
-  'Данные для вкладки ТРАНСМИССИЯ',
-  'Данные для вкладки УПРАВЛЕНИЕ',
-  'Данные для вкладки ХОДОВАЯ ЧАСТЬ',
-  'Данные для вкладки ШИНОМОНТАЖ',
+const TableRowsInit: IPriceContentItem[][] = [
+  Engine,
+  GearBox,
+  Diagnostic,
+  BrakingSystem,
+  Steering,
+  Transmission,
+  Chassis,
+  TireFitting,
 ];
 
 export const reducer = combineReducers({

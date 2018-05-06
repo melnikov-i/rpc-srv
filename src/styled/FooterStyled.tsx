@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 import {
   HEADER_BACKGROUND_COLOR,
-  // MAIN_CONTAINER_MAX_WIDTH,
-  // HEADER_ACCENT_COLOR,
-  // HEADER_LOGO_WIDTH
 } from '@src/styled';
+
+/**
+ * Обертка подвала страницы.
+ */
 
 export const FooterWrapper = styled.div`
   width: 100%;
@@ -15,13 +16,19 @@ export const FooterWrapper = styled.div`
   box-sizing: border-box;
   padding: 50px;
   position: relative;
+`;
 
-  `;
-  // height: 300px;
+/**
+ * Подвал страницы
+ */
 
 export const Footer = styled.div`
   position: relative;
 `;
+
+/**
+ * Обертка для контейнера с расписанием работы СТО
+ */
 
 export const FooterScheduleWrapper = styled.div`
   display: inline-block;
@@ -31,11 +38,21 @@ export const FooterScheduleWrapper = styled.div`
   top: 0;
   right: 0;
 `;
+
+/**
+ * Контейнер с расписанием работы СТО
+ */
+
 export const FooterSchedule = styled.div`
   width: 100%;
   padding: 0 2.25%;
   box-sizing: border-box;
 `;
+
+/**
+ * Обертка для контейнера с картой из Яндекса
+ */
+
 export const FooterMapWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
@@ -44,11 +61,20 @@ export const FooterMapWrapper = styled.div`
   top: 0;
   left: 0;
 `;
+
+/**
+ * Контейнер с картой из Яндекса
+ */
+
 export const FooterMap = styled.div`
   width: 100%;
   padding: 0 2.25%;
   box-sizing: border-box;
 `;
+
+/**
+ * Заголовок футера
+ */
 
 export const FooterHeader = styled.div`
   margin-bottom: 10px;
@@ -60,10 +86,14 @@ export const FooterHeader = styled.div`
   font-weight: 400;
 `;
 
+/**
+ * Контейнер стрелки вверх для прокрутки страницы вверх
+ */
+
 export const FooterToTop = styled.div`
   width: 60px;
   height: 60px;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   background-color: ${ HEADER_BACKGROUND_COLOR };

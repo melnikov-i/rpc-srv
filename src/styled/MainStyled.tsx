@@ -19,6 +19,14 @@ export const MainBlockHeader = styled.h2`
   text-align: center;
 `;
 
+export const MainBlockParagraph = styled.p`
+  font-size: 16px;
+  font-weight: normal;
+  color: #646464;
+  margin: 20px 0 40px;
+  text-align: center;
+`;
+
 export const FooterScheduleRow = styled.p`
   font-size: 14px;
   line-height: 30px;

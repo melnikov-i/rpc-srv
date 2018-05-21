@@ -9,6 +9,9 @@ import {
   MAIN_CONTAINER_MAX_WIDTH,
   HEADER_ACCENT_COLOR,
   HEADER_LOGO_WIDTH,
+  MILLDE_SCREEN_MIN,
+  MIDDLE_SCREEN_MAX,
+  SMALL_SCREEN_MAX,
 } from '@src/styled';
 
 /**
@@ -113,7 +116,10 @@ export const HeaderTopMenuWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-
+  @media screen
+    and (max-width: ${SMALL_SCREEN_MAX}) {
+      display: none;
+    }
 `;
 
 /**
@@ -165,6 +171,16 @@ export const HeaderTopMenuTextContentWrapper = styled.div`
     };
     box-sizing: border-box;
   }
+  @media screen
+    and (min-width: ${MILLDE_SCREEN_MIN})
+    and (max-width: ${MIDDLE_SCREEN_MAX}) {
+      padding: 8px;
+      height: 44px;
+      &::after {
+        height: 28px;
+      }
+    )};
+  }
 `;
 
 /**
@@ -207,6 +223,16 @@ export const HeaderTopMenuAnchorContent = styled.div`
     color: #fff;
     margin-right: 10px;
   }
+  @media screen
+    and (min-width: ${MILLDE_SCREEN_MIN})
+    and (max-width: ${MIDDLE_SCREEN_MAX}) {
+      height: 28px;
+      &::before {
+        margin: 0;
+        font-size: 28px;
+      }
+    )};
+  }
 `;
 
 /**
@@ -215,6 +241,13 @@ export const HeaderTopMenuAnchorContent = styled.div`
 export const HeaderTopMenuAnchorTextWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
+  @media screen
+    and (min-width: ${MILLDE_SCREEN_MIN})
+    and (max-width: ${MIDDLE_SCREEN_MAX}) {
+      display: ${(props: { hiddenOnMiddleScreen: boolean}) => (
+        props.hiddenOnMiddleScreen ? 'inline-block' : 'none'
+      )};
+    }
 `;
 
 /**
@@ -244,6 +277,11 @@ export const HeaderTopMenuText = styled.div`
   display: block;
   font-size: 18px;
   color: #fff;
+  @media screen
+    and (min-width: ${MILLDE_SCREEN_MIN})
+    and (max-width: ${MIDDLE_SCREEN_MAX}) {
+      font-size: 24px;
+    }
 `;
 
 /**

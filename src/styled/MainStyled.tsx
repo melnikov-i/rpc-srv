@@ -2,12 +2,17 @@ import styled from 'styled-components';
 
 import {
   MAIN_CONTAINER_MAX_WIDTH,
+  TEXT_COLOR,
 } from '@src/styled';
 
 export const MainWrapper = styled.div`
   max-width: ${ MAIN_CONTAINER_MAX_WIDTH };
   width: 100%;
   margin: 0 auto;
+`;
+
+export const MainBlockWraper = styled.div`
+  margin: 20px 10px 40px;
 `;
 
 export const MainBlockHeader = styled.h2`
@@ -22,8 +27,7 @@ export const MainBlockHeader = styled.h2`
 export const MainBlockParagraph = styled.p`
   font-size: 16px;
   font-weight: normal;
-  color: #646464;
-  margin: 20px 0 40px;
+  color: ${ TEXT_COLOR };
   text-align: center;
 `;
 

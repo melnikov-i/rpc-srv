@@ -34,6 +34,7 @@ import {
 
   MainBlockHeader,
   MainBlockParagraph,
+  MainBlockWraper,
 
   FooterWrapper,
   Footer,
@@ -197,7 +198,9 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
                             <HeaderTopMenuAnchorContent
                               icon={e.icon}
                             >
-                              <HeaderTopMenuAnchorTextWrapper>
+                            <HeaderTopMenuAnchorTextWrapper
+                              hiddenOnMiddleScreen={false}
+                            >
                                 <HeaderTopMenuAnchorLightText>
                                   {e.text[0]}
                                 </HeaderTopMenuAnchorLightText>
@@ -215,7 +218,9 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
                         <HeaderTopMenuAnchorContent
                           icon={e.icon}
                         >
-                          <HeaderTopMenuAnchorTextWrapper>
+                          <HeaderTopMenuAnchorTextWrapper
+                            hiddenOnMiddleScreen={true}
+                          >
                             <HeaderTopMenuText>
                               {e.text}
                             </HeaderTopMenuText>
@@ -247,12 +252,28 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
       <CarouselConnected />
       <Element name={'about'}>
         <MainBlockHeader>{'О НАС'}</MainBlockHeader>
+        <MainBlockWraper>
+          <MainBlockParagraph>
+            {'RPS-Servis -- это оборудованная по современным стандартам'
+            + ' станция технического обслуживания автомобией. В основном, мы'
+            + ' предоставляем услуги по техническому обслуживанию и диагностике'
+            + ' неисправностей автомобилей французского производства. Однако,'
+            + ' компетенция наших сотрудником и техническая оснащенность станции'
+            + ' позволяет предоставлять все виды услуг для европейских, японских'
+            + ' и корейских автомобилей.'}
+          </MainBlockParagraph>
+        </MainBlockWraper>
+        <MainBlockWraper>
         <MainBlockParagraph>
-          {'RPS-Servis -- это оборудованная по современным стандартам станция технического обслуживания автомобией. В основном, мы предоставляем услуги по техническому обслуживанию и диагностике неисправностей автомобилей французского производства. Однако, компетенция наших сотрудником и техническая оснащенность станции позволяет предоставлять все виды услуг для европейских, японских и корейских автомобилей.'}
+          {'Многолетний опыт работы нашего коллектива позволяет нам без'
+            + ' труда выявить и устранить любую проблему с вашим автомобилем.'
+            + ' Для этого у нас есть все необходимое новейшее оборудование и '
+            + 'инструмент. Все используемое в ремонте оборудование, а также '
+            + 'устанавливаемые запасные части сертифицированы. На все виды'
+            + ' работ, приобретенные у нас и установленные на ваш автомобиль запасные'
+            + ' части предоставляется гарантия качества.'}
         </MainBlockParagraph>
-        <MainBlockParagraph>
-          {'Многолетний опыт работы нашего коллектива позволяет нам без труда выявить все ваши потребности в ремонте и решить любую проблему с вашим автомобилем. Для этого у нас есть все необходимое новейшее оборудование и инструмент. Все используемое в ремонте оборудование, а также устанавливаемые запасные части сертифицированы. На все виды работ, приобретенные у нас и установленные на ваш автомобиль запасные части предоставляется гарантия качества.'}
-        </MainBlockParagraph>
+        </MainBlockWraper>
       </Element>
       <Element name={'price'}>
         <MainBlockHeader>{'УСЛУГИ И ЦЕНЫ'}</MainBlockHeader>

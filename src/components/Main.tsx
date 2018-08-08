@@ -34,6 +34,8 @@ import {
 
   MainBlockHeader,
   MainBlockParagraph,
+  MainBlockUList,
+  MainBlockListItem,
   MainBlockWraper,
 
   FooterWrapper,
@@ -129,11 +131,16 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
       text: 'УСЛУГИ И ЦЕНЫ',
       to: 'price',
     },
-    // {
-    //   text: 'ГАРАНТИЯ',
-    //   to: 'warranty',
-    // },
+    {
+      text: 'ГАРАНТИЯ',
+      to: 'warranty',
+    },
   ];
+
+  /**
+   * Диагностика ходовой бесплатно
+   * При покупке масла и масленного фильтра, работы по замене масла бесплатно (экономия от 500 рублей)
+   */
 
   const handlerMenuAnchor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -280,7 +287,29 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
         <PriceConnected />
       </Element>
       <Element name={'warranty'}>
-        {/* <MainBlockHeader>{'ГАРАНТИЯ'}</MainBlockHeader> */}
+        <MainBlockHeader>{'ГАРАНТИЯ'}</MainBlockHeader>
+        <MainBlockUList>
+          <MainBlockListItem>
+            <strong style={{fontSize: '16px'}}>{'Техническое обслуживание: '}</strong>
+            {'20 дней или 1000 км пробега'}
+          </MainBlockListItem>
+          <MainBlockListItem>
+            <strong style={{fontSize: '16px'}}>{'Текущий ремонт: '}</strong>
+            {'90 дней или 7000 км пробега'}
+          </MainBlockListItem>
+          <MainBlockListItem>
+            <strong style={{fontSize: '16px'}}>{'Регулировочные работы: '}</strong>
+            {'3 - 5 дней'}
+          </MainBlockListItem>
+          <MainBlockListItem>
+            <strong style={{fontSize: '16px'}}>{'Ремонт кузова и его элементов: '}</strong>
+            {'6 месяцев'}
+          </MainBlockListItem>
+          <MainBlockListItem>
+            <strong style={{fontSize: '16px'}}>{'Полная или частичная окраска: '}</strong>
+            {'6 месяцев'}
+          </MainBlockListItem>
+        </MainBlockUList>
       </Element>
       <FooterWrapper>
         <Footer>

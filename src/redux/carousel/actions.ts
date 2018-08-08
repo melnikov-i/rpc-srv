@@ -30,7 +30,7 @@ const resetTransform = (): void => {
   const element: HTMLElement | null = document.getElementById('CarouselWrapper');
   if ( element !== null ) {
     element.style.transition = 'none';
-    element.style.transform = 'translateX(-25%)';
+    element.style.transform = 'translateX(-20%)';
   }
 };
 

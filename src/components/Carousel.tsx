@@ -63,6 +63,7 @@ export const Carousel: React.SFC<ICarouselProps> = ( props ) => {
     ],
   };
 
+  console.log('payload', payload);
   makeCarouselAnimationContinue(payload, true);
 
   /**
@@ -73,7 +74,7 @@ export const Carousel: React.SFC<ICarouselProps> = ( props ) => {
     if ( element !== null ) {
       element.style.transition = 'transform 2s ease 0s';
       element.style.transform =
-        (CarouselCollection.direction) ? 'translateX(-50%)' : 'translateX(0)';
+        (CarouselCollection.direction) ? 'translateX(-40%)' : 'translateX(0)';
     }
   }, 1000);
 
@@ -112,7 +113,7 @@ export const Carousel: React.SFC<ICarouselProps> = ( props ) => {
         id={'CarouselWrapper'}
         width={String(CarouselInnerWrapperWidth)}
       >
-        I{items.map((e: ICarouselItemInterface, i: number) => (
+        {items.map((e: ICarouselItemInterface, i: number) => (
           <CarouselItem
             key={i}
             image={e.image}

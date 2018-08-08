@@ -32,7 +32,7 @@ export const CarouselInnerWrapper = styled.div`
   right: 0;
   bottom: 0;
   width: ${(props: ICarouselInnerWrapperProps) => props.width + '00%'};
-  transform: translateX(-25%);
+  transform: translateX(-20%);
   `;
 
 /**

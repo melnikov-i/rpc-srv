@@ -15,6 +15,7 @@ export type State = {
 const slide1 = require('@src/images/slide_1.png');
 const slide2 = require('@src/images/slide_2.png');
 const slide3 = require('@src/images/slide_3.png');
+const slide4 = require('@src/images/slide_4.png');
 
 const CarouselInit: ICarouselInterface = {
   direction: true,
@@ -23,14 +24,16 @@ const CarouselInit: ICarouselInterface = {
       image: slide1,
       header: '',
       text: '',
-    },
-    {
+    }, {
       image: slide2,
       header: '',
       text: '',
-    },
-    {
+    }, {
       image: slide3,
+      header: '',
+      text: '',
+    }, {
+      image: slide4,
       header: '',
       text: '',
     },

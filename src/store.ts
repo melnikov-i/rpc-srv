@@ -1,15 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { rootReducer, IRootState } from '@src/redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 
 function confugureStore(initialState?: IRootState) {
-  return createStore<IRootState>(
+  return createStore(
     rootReducer,
     initialState!,
-    composeWithDevTools(
+    // composeWithDevTools(
       applyMiddleware(thunk),
-    ),
+    // ),
   );
 }
 

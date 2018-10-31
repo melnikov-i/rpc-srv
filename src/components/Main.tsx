@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import {
   Element,
   scroller,
@@ -72,7 +72,7 @@ const FontAwesomeSVG = require('@src/fonts/fontawesome-webfont.svg');
 /**
  * Глобальные стили 
  */
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -161,6 +161,7 @@ export const Main: React.SFC<IMainProps> = ( props ) => {
 
   return (
     <MainWrapper>
+      <GlobalStyle />
       {/* Шапка сайта */}
       <HeaderWrapper>
         {/* Логотип сайта */}

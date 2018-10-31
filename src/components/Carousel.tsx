@@ -63,7 +63,6 @@ export const Carousel: React.SFC<ICarouselProps> = ( props ) => {
     ],
   };
 
-  console.log('payload', payload);
   makeCarouselAnimationContinue(payload, true);
 
   /**

@@ -47,7 +47,7 @@ const TableRowsInit: IPriceContentItem[][] = [
   TireFitting,
 ];
 
-export const reducer = combineReducers({
+export const reducer = combineReducers<State>({
   IndexOfActiveItem: ( state = 0, action ) => {
     switch ( action.type ) {
       case CHANGE_INDEX_OF_ACTIVE_ITEM:

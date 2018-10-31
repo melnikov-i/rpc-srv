@@ -187,7 +187,7 @@ export const HeaderTopMenuTextContentWrapper = styled.div`
  * Обертка содержимого для ссылки верхнего меню
  */
 export const HeaderTopMenuAnchorContentWrapper =
-HeaderTopMenuTextContentWrapper.extend`
+styled(HeaderTopMenuTextContentWrapper)`
   cursor: pointer;
   &::before {
     content: "";

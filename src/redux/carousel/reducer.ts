@@ -40,7 +40,7 @@ const CarouselInit: ICarouselInterface = {
   ],
 };
 
-export const reducer = combineReducers({
+export const reducer = combineReducers<State>({
   CarouselCollection: ( state = CarouselInit, action ) => {
     switch ( action.type ) {
       case CAROUSEL_ANIMATION_CONTINUE:

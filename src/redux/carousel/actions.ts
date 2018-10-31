@@ -1,7 +1,5 @@
-import {
-  ICarouselInterface,
-} from '@src/interfaces';
-import { Dispatch } from '@src/redux';
+import { ICarouselInterface } from '@src/interfaces';
+import { Dispatch } from 'redux';
 
 export const CAROUSEL_ANIMATION_CONTINUE =
   'CAROUSEL_ANIMATION_CONTINUE';

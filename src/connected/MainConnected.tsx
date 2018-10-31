@@ -1,7 +1,7 @@
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Dispatch, IRootState } from '@src/redux';
+import { IRootState } from '@src/redux';
 
 import { Main } from '@src/components';
 
